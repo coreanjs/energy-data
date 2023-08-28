@@ -18,7 +18,12 @@ format:
 execute:
   echo: true
   warning: false
+  
+  
+
 ---
+
+# 통계청 소비자물가지수를 활용한 분석
 
 ```{r}
 library(tidyverse)
@@ -32,7 +37,6 @@ showtext_auto()
 
 font_add_google("Nanum Gothic", "nanumgothic")
 font_add_google("Poor Story", "poorstory")
-
 
 
 #R 버전 알려주는 코드 
@@ -58,10 +62,12 @@ range(price_tidy$date)
 
 ```
 
+
+
 ```{r out.width ="80%"}
 
 
-price_tidy %>% 
+price_img <- price_tidy %>% 
   ggplot() +
   geom_line(data =. %>% filter(!type %in% c("도시가스", "경유")), aes(x = date, y = value, group = type), linewidth = 1.2,  color ="gray")+
   geom_line(data =. %>% filter(type =="경유"), aes(x = date, y = value), linewidth = 1.5,  color ="red")+
@@ -72,5 +78,17 @@ price_tidy %>%
   labs(title ="물가지수에서 경유와 도시가스만 표기",
        subtitle ="물가지수에서 에너지가 차지하는 정도를 보기 위해 만들었다")
 
+price_img
+
 
 ```
+* 주어진 10개의 물가지수 중 어떤 걸 강조할 것인지 - 스토레 텔링
+* 도시가스? 전기료? 휘발유? 경유?
+
+참고 유튜브
+
+[Applying concepts from Storytelling with Data in R using ggplot2](https://youtu.be/rkQREY_FfqI?si=e9PxnzjNstY6CjVY)
+
+
+
+## 텍스트 분석
