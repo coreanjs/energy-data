@@ -1,0 +1,79 @@
+---
+title: "IAM KAIST TEAM"
+description: "IAM KAIST"
+date: today # 날짜 설정: now, last-modified
+author:
+  - name: Energy & Data @ KIER
+  #  url: 
+    affiliation: KIER
+    #affiliation-url: 
+title-block-banner: false
+#title-block-banner: "#562457"
+format:
+  html:
+    code-fold: true
+    toc: true
+    toc-depth: 2
+    toc-title: 목차
+    number-sections: true
+    highlight-style: github    
+    self-contained: false
+link-citation: true
+csl: apa-single-spaced.csl
+reference-location: margin
+---
+
+# 2023-08-17 첫회의
+
+::: callout-note
+## 참여자 {#참여자}
+
+KIER 기술정책플랫폼 업무 참여자 : 안지석, 최지영 이화랑
+:::
+
+## 추진 방향
+
+### Track.1 (외부업체 협업 필요)인포그래픽/인터랙티브
+
+기획 -\> 데이터 분석/시각화 -\> 스토리라인 구상 -\> 원고 작성 -\> 디자인 -\> 퍼블리싱
+
+-   외부 업체 지원 필수
+-   우수 레퍼런스 참고하여 아이디어 얻는 게 중요
+-   [Reuters graphics](https://www.reuters.com/graphics/)
+-   [SCMP](https://multimedia.scmp.com/culture/article/SCMP-printed-graphics-memory/)
+-   [NYT](https://www.nytimes.com/interactive/2021/12/05/business/economy/supply-chain.html?auth=login-google1tap&campaign_id=29&emc=edit_up_20211209&instance_id=47387&login=google1tap&nl=the-upshot&regi_id=136905000&segment_id=76536&te=1&user_id=0f183908c0e3f8d0f23ed9b81a5aaf71)
+-   [WORLD BANK](https://genderdata.worldbank.org/data-stories/flfp-data-story/)
+-   [K-에너지밸런스](https://www.kier.re.kr/tpp/energy/B/view/54?contentsName=k_valance_old&menuId=MENU00961)
+
+### Track2. (Made in KIER 100%)[Energy&Data](https://www.kier.re.kr/tpp/tppBoard/list?menuId=MENU00962)
+
+기획 -\> 데이터 분석/시각화 -\> 스토리라인 구상 -\> html로 원고 작성 -\> 관리자 모드를 통한 퍼블리싱
+
+-   정책연구실 자체적으로 제작 가능
+-   데이터 시각화, 텍스트 마이닝, 네트워크 분석 등 다양한 시도 가능
+-   데이터 시각화의 정수 [Economist - Graphic detail](https://www.economist.com/graphic-detail)
+
+## 참여 방법
+
+-   재밌고 자발적으로
+-   코딩을 배우거나 시도하고 싶다면 [Github을 통한 공유](https://coreanjs.github.io/jiseok_KIER/docs/blog/posts/2023-08-24-visualization/) 가능
+-   새로운 시도
+    -   R
+    -   Python
+    -   [Quarto](https://quarto.org/docs/authoring/markdown-basics.html), github 등
+    -   [Markdown](https://gist.github.com/ihoneymon/652be052a0727ad59601)
+-   데이터분석/시각화는 언제든 협조
+
+## 요청 사항(8-22까지)
+
+어떤 콘텐츠를 기획하고 제작할지 개인당 3개 이상씩 조사
+
+[자세하게 설명해주시면 감사하겠습니다.]{.aside}
+
+::: callout-tip
+## 예시
+
+2022년 국가연구개발사업 데이터 분석 및 인포그래픽 제작\
+방법:트리맵, 인터랙티브\
+자료 출처: KISTEP
+:::

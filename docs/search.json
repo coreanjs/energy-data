@@ -1,0 +1,30 @@
+[
+  {
+    "objectID": "project_with_code.html",
+    "href": "project_with_code.html",
+    "title": "KIER기술정책플랫폼",
+    "section": "",
+    "text": "price_tidy %>% \n  ggplot() +\n  geom_line(data =. %>% filter(!type %in% c(\"도시가스\", \"경유\")), aes(x = date, y = value, group = type), linewidth = 1.2,  color =\"gray\")+\n  geom_line(data =. %>% filter(type ==\"경유\"), aes(x = date, y = value), linewidth = 1.5,  color =\"red\")+\n  geom_line(data =. %>% filter(type ==\"도시가스\"), aes(x = date, y = value), linewidth = 1.5,  color =\"blue\")+\n    theme_bw()+\n  theme_minimal()+\n  theme(plot.title = element_text(family=\"nanumgothic\"))+\n  labs(title =\"물가지수에서 경유와 도시가스만 표기\",\n       subtitle =\"물가지수에서 에너지가 차지하는 정도를 보기 위해 만들었다\")"
+  },
+  {
+    "objectID": "230823_price.html",
+    "href": "230823_price.html",
+    "title": "Energy&Data",
+    "section": "",
+    "text": "price_tidy %>% \n  ggplot() +\n  geom_line(data =. %>% filter(!type %in% c(\"도시가스\", \"경유\")), aes(x = date, y = value, group = type), linewidth = 1.2,  color =\"gray\")+\n  geom_line(data =. %>% filter(type ==\"경유\"), aes(x = date, y = value), linewidth = 1.5,  color =\"red\")+\n  geom_line(data =. %>% filter(type ==\"도시가스\"), aes(x = date, y = value), linewidth = 1.5,  color =\"blue\")+\n    theme_bw()+\n  theme_minimal()+\n  theme(plot.title = element_text(family=\"nanumgothic\"))+\n  labs(title =\"물가지수에서 경유와 도시가스만 표기\",\n       subtitle =\"물가지수에서 에너지가 차지하는 정도를 보기 위해 만들었다\")"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "IAM KAIST TEAM",
+    "section": "",
+    "text": "참여자\n\n\n\nKIER 기술정책플랫폼 업무 참여자 : 안지석, 최지영 이화랑\n\n\n\n\n\n\n기획 -> 데이터 분석/시각화 -> 스토리라인 구상 -> 원고 작성 -> 디자인 -> 퍼블리싱\n\n외부 업체 지원 필수\n우수 레퍼런스 참고하여 아이디어 얻는 게 중요\nReuters graphics\nSCMP\nNYT\nWORLD BANK\nK-에너지밸런스\n\n\n\n\n기획 -> 데이터 분석/시각화 -> 스토리라인 구상 -> html로 원고 작성 -> 관리자 모드를 통한 퍼블리싱\n\n정책연구실 자체적으로 제작 가능\n데이터 시각화, 텍스트 마이닝, 네트워크 분석 등 다양한 시도 가능\n데이터 시각화의 정수 Economist - Graphic detail\n\n\n\n\n\n\n재밌고 자발적으로\n코딩을 배우거나 시도하고 싶다면 Github을 통한 공유 가능\n새로운 시도\n\nR\nPython\nQuarto, github 등\nMarkdown\n\n데이터분석/시각화는 언제든 협조\n\n\n\n\n어떤 콘텐츠를 기획하고 제작할지 개인당 3개 이상씩 조사\n자세하게 설명해주시면 감사하겠습니다.\n\n\n\n\n\n\n예시\n\n\n\n2022년 국가연구개발사업 데이터 분석 및 인포그래픽 제작\n방법:트리맵, 인터랙티브\n자료 출처: KISTEP"
+  },
+  {
+    "objectID": "index.html#model-overview",
+    "href": "index.html#model-overview",
+    "title": "IAM KAIST TEAM",
+    "section": "2.1 Model Overview",
+    "text": "2.1 Model Overview\nGCAM is a dynamic-recursive model with technology-rich representations of the economy, energy sector, land use and water linked to a climate model that can be used to explore climate change mitigation policies including carbon taxes, carbon trading, regulations and accelerated deployment of energy technology. Regional population and labor productivity growth assumptions drive the energy and land-use systems employing numerous technology options to produce, transform, and provide energy services as well as to produce agriculture and forest products, and to determine land use and land cover. Using a run period extending from 1990 – 2100 at 5 year intervals, GCAM has been used to explore the potential role of emerging energy supply technologies and the greenhouse gas consequences of specific policy measures or energy technology adoption including; CO2 capture and storage, bioenergy, hydrogen systems, nuclear energy, renewable energy technology, and energy use technology in buildings, industry and the transportation sectors. GCAM is an Representative Concentration Pathway (RCP)-class model. This means it can be used to simulate scenarios, policies, and emission targets from various sources including the Intergovernmental Panel on Climate Change (IPCC). Output includes projections of future energy supply and demand and the resulting greenhouse gas emissions, radiative forcing and climate effects of 16 greenhouse gases, aerosols and short-lived species at 0.5×0.5 degree resolution, contingent on assumptions about future population, economy, technology, and climate mitigation policy."
+  }
+]

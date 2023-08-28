@@ -1,0 +1,76 @@
+---
+title: "KIER기술정책플랫폼"
+date : last-modified # now
+author: 
+ - name: "안지석"
+   affiliation: "한국에너지기술연구원 정책연구실"
+title-block-banner: true
+format: 
+  html:
+    theme: flatly
+    code-fold: false
+    toc: true
+    toc-depth: 2
+    toc-title: 목차
+    number-section : true
+    highlight-style: github
+    self-contained: false
+execute:
+  echo: true
+  warning: false
+---
+
+```{r}
+library(tidyverse)
+library(readxl)
+library(lubridate)
+library(zoo)
+library(showtext)
+library(extrafont)
+
+showtext_auto()
+
+font_add_google("Nanum Gothic", "nanumgothic")
+font_add_google("Poor Story", "poorstory")
+
+
+
+#R 버전 알려주는 코드 
+R.version
+
+
+price_raw <- read_excel("230821_생활물가지수.xlsx", sheet ="Sheet1")
+
+
+unique(price_raw$type)
+
+
+price_tidy<- price_raw %>% 
+  pivot_longer(-type, values_to ="value", names_to = "date") %>% 
+  mutate(date = zoo::as.yearmon(date, "%Y.%m"),
+         color_label = case_when(type =='경유'~ type,
+                                 type =="도시가스" ~ type,
+                                 TRUE ~ '기타'))
+
+range(price_tidy$date)
+
+
+
+```
+
+```{r out.width ="80%"}
+
+
+price_tidy %>% 
+  ggplot() +
+  geom_line(data =. %>% filter(!type %in% c("도시가스", "경유")), aes(x = date, y = value, group = type), linewidth = 1.2,  color ="gray")+
+  geom_line(data =. %>% filter(type =="경유"), aes(x = date, y = value), linewidth = 1.5,  color ="red")+
+  geom_line(data =. %>% filter(type =="도시가스"), aes(x = date, y = value), linewidth = 1.5,  color ="blue")+
+    theme_bw()+
+  theme_minimal()+
+  theme(plot.title = element_text(family="nanumgothic"))+
+  labs(title ="물가지수에서 경유와 도시가스만 표기",
+       subtitle ="물가지수에서 에너지가 차지하는 정도를 보기 위해 만들었다")
+
+
+```

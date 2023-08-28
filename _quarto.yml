@@ -1,0 +1,20 @@
+project:
+  title: "test"
+  type: website  ### 이거 빠지면 안됌
+  output-dir: docs
+  
+  
+  
+website:
+  title: "Energy & Data @ KIER"
+  favicon: "./img/analysis.png"
+  open-graph: true
+  twitter-card: false
+  navbar: 
+    left: 
+      - href: project_with_code.qmd
+        text: contents
+
+        aria-label: GitHub
+editor: visual
+
