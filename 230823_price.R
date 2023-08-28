@@ -4,6 +4,7 @@ library(lubridate)
 library(zoo)
 library(showtext)
 library(extrafont)
+library(ggtext)
 
 showtext_auto()
 
@@ -54,15 +55,16 @@ price_tidy_img <- price_tidy %>%
     theme_bw()+
   theme_minimal()+
   theme(plot.title = element_text(size = 24, family="nanumgothic"),
+        plot.subtitle =element_markdown(),
         plot.background =element_rect(fill="white"),
         panel.grid.minor = element_blank())+
-  labs(title ="통계청 생활물가지수를 활용한 분석",
-       subtitle ="물가지수에서 경유와 도시가스만 표기",
+  labs(title ="통계청 생활물가지수를 통해서 보는 에너지 물가",
+       subtitle ="물가지수에서 <span style = 'color:red;'>경유</span>와 <span style = 'color:gold;'>휘발유</span>만 표기",
        caption = "Source: 통계청, Graphic: Jiseok")
 
 price_tidy_img
 
-ggsave(plot = price_tidy_img, "대전 강수량.png",  width= 630, height = 700, units ="px", dpi = 100)
+ggsave(plot = price_tidy_img, "경유와 휘발유.png",  width= 630, height = 700, units ="px", dpi = 100)
 
 
 

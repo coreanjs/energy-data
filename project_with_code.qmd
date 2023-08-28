@@ -4,7 +4,7 @@ date : last-modified # now
 author: 
  - name: "안지석"
    affiliation: "한국에너지기술연구원 정책연구실"
-title-block-banner: true
+title-block-banner: false
 format: 
   html:
     theme: flatly
@@ -12,15 +12,15 @@ format:
     toc: true
     toc-depth: 2
     toc-title: 목차
-    number-section : true
+    number-sections : true
     highlight-style: github
     self-contained: false
+link-citation: true
+csl: apa-single-spaced.csl
+reference-location: margin
 execute:
   echo: true
   warning: false
-  
-  
-
 ---
 
 # 통계청 소비자물가지수를 활용한 분석
@@ -82,7 +82,13 @@ price_img
 
 
 ```
-* 주어진 10개의 물가지수 중 어떤 걸 강조할 것인지 - 스토레 텔링
+
+
+![](경유와 휘발유.png)
+
+
+
+* 주어진 10개의 물가지수 중 어떤 걸 강조할 것인지 - 스토리텔링
 * 도시가스? 전기료? 휘발유? 경유?
 
 참고 유튜브
@@ -91,4 +97,26 @@ price_img
 
 
 
-## 텍스트 분석
+# 암모니아 수용성 분석
+
+* 목적: 암모니아 수용성 분석 결과 시각화
+* 주요 내용
+  * 암모니아의 폭발, 독성, 냄새에 대한 일반 국민의 수용성 분석
+  * 일반 국민의 개인 특성에 따른 수용성 분석
+
+# R&D 프로젝트의 위험 요인과 위험 관리 전략 분석
+
+* 목적: 네트워크 분석을 통해 R&D 프로젝트의 위험 요인 간 상관관계와 위험 관리 전략 분석
+
+# 신재생에너지 잠재량 Vs 신재생에너지 발전량 
+
+* 태양광 중심의 신재생에너지 잠재량 대비 신재생에너지 발전량을 비교하여 지도 형태로 제시
+* 신재생빅데이터연구실의 신재생에너지 기술적 잠재량과 한국에너지공단 신재생에너지센터 보급통계 발전량을 활용 
+* 잠재량은 높으나 보급통계 발전량이 낮을 경우 기술적, 정책적 해결책 제시 등으로 발전(가능하다면...) 
+
+
+# 텍스트 마이닝을 활용한 정권별 에너지정책 이슈 분석
+
+* 에너지정책 관련 언론보도 분석을 통해 에너지정책 분야 주요 이슈의 특징, 경향, 변화 방향 분석
+* 키워드 동시출현 빈도 네트워크, 키워드 간 상관관계 네트워크 분석 등 수행
+

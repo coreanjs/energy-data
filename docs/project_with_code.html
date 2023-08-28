@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="안지석">
+<meta name="dcterms.date" content="2023-08-28">
 
-<title>Energy &amp; Data @ KIER – project_with_code</title>
+<title>Energy &amp; Data @ KIER - KIER기술정책플랫폼</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -124,9 +126,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 }</script>
 
 
+<meta property="og:title" content="Energy &amp; Data @ KIER - KIER기술정책플랫폼">
+<meta property="og:description" content="참고 유튜브">
+<meta property="og:site-name" content="Energy &amp; Data @ KIER">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -155,62 +160,75 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">목차</h2>
+   
+  <ul class="collapse">
+  <li><a href="#통계청-소비자물가지수를-활용한-분석" id="toc-통계청-소비자물가지수를-활용한-분석" class="nav-link active" data-scroll-target="#통계청-소비자물가지수를-활용한-분석"><span class="toc-section-number">1</span>  통계청 소비자물가지수를 활용한 분석</a></li>
+  <li><a href="#암모니아-수용성-분석" id="toc-암모니아-수용성-분석" class="nav-link" data-scroll-target="#암모니아-수용성-분석"><span class="toc-section-number">2</span>  암모니아 수용성 분석</a></li>
+  <li><a href="#rd-프로젝트의-위험-요인과-위험-관리-전략-분석" id="toc-rd-프로젝트의-위험-요인과-위험-관리-전략-분석" class="nav-link" data-scroll-target="#rd-프로젝트의-위험-요인과-위험-관리-전략-분석"><span class="toc-section-number">3</span>  R&amp;D 프로젝트의 위험 요인과 위험 관리 전략 분석</a></li>
+  <li><a href="#신재생에너지-잠재량-vs-신재생에너지-발전량" id="toc-신재생에너지-잠재량-vs-신재생에너지-발전량" class="nav-link" data-scroll-target="#신재생에너지-잠재량-vs-신재생에너지-발전량"><span class="toc-section-number">4</span>  신재생에너지 잠재량 Vs 신재생에너지 발전량</a></li>
+  <li><a href="#텍스트-마이닝을-활용한-정권별-에너지정책-이슈-분석" id="toc-텍스트-마이닝을-활용한-정권별-에너지정책-이슈-분석" class="nav-link" data-scroll-target="#텍스트-마이닝을-활용한-정권별-에너지정책-이슈-분석"><span class="toc-section-number">5</span>  텍스트 마이닝을 활용한 정권별 에너지정책 이슈 분석</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">KIER기술정책플랫폼</h1>
+</div>
 
 
-<section id="통계청-소비자물가지수를-활용한-분석" class="level1">
-<h1>통계청 소비자물가지수를 활용한 분석</h1>
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    안지석 
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            한국에너지기술연구원 정책연구실
+          </p>
+      </div>
+    </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 28, 2023</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<section id="통계청-소비자물가지수를-활용한-분석" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> 통계청 소비자물가지수를 활용한 분석</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.2     ✔ readr     2.1.4
-✔ forcats   1.0.0     ✔ stringr   1.5.0
-✔ ggplot2   3.4.3     ✔ tibble    3.2.1
-✔ lubridate 1.9.2     ✔ tidyr     1.3.0
-✔ purrr     1.0.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(zoo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'zoo'
-
-The following objects are masked from 'package:base':
-
-    as.Date, as.Date.numeric</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(showtext)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: sysfonts
-Loading required package: showtextdb</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(extrafont)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Registering fonts with R
-
-Attaching package: 'extrafont'
-
-The following object is masked from 'package:showtextdb':
-
-    font_install</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">showtext_auto</span>()</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">font_add_google</span>(<span class="st">"Nanum Gothic"</span>, <span class="st">"nanumgothic"</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">font_add_google</span>(<span class="st">"Poor Story"</span>, <span class="st">"poorstory"</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">#R 버전 알려주는 코드 </span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>R.version</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(zoo)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(showtext)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(extrafont)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">showtext_auto</span>()</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">font_add_google</span>(<span class="st">"Nanum Gothic"</span>, <span class="st">"nanumgothic"</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">font_add_google</span>(<span class="st">"Poor Story"</span>, <span class="st">"poorstory"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">#R 버전 알려주는 코드 </span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>R.version</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>               _                                
 platform       x86_64-w64-mingw32               
@@ -229,54 +247,84 @@ language       R
 version.string R version 4.3.1 (2023-06-16 ucrt)
 nickname       Beagle Scouts                    </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>price_raw <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"230821_생활물가지수.xlsx"</span>, <span class="at">sheet =</span><span class="st">"Sheet1"</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(price_raw<span class="sc">$</span>type)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>price_raw <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"230821_생활물가지수.xlsx"</span>, <span class="at">sheet =</span><span class="st">"Sheet1"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(price_raw<span class="sc">$</span>type)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "총지수"     "커피(외식)" "소주(외식)" "맥주(외식)" "전기료"    
  [6] "도시가스"   "휘발유"     "경유"       "시내버스료" "택시료"    </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>price_tidy<span class="ot">&lt;-</span> price_raw <span class="sc">%&gt;%</span> </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>type, <span class="at">values_to =</span><span class="st">"value"</span>, <span class="at">names_to =</span> <span class="st">"date"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">date =</span> zoo<span class="sc">::</span><span class="fu">as.yearmon</span>(date, <span class="st">"%Y.%m"</span>),</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">color_label =</span> <span class="fu">case_when</span>(type <span class="sc">==</span><span class="st">'경유'</span><span class="sc">~</span> type,</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>                                 type <span class="sc">==</span><span class="st">"도시가스"</span> <span class="sc">~</span> type,</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>                                 <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">'기타'</span>))</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(price_tidy<span class="sc">$</span>date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>price_tidy<span class="ot">&lt;-</span> price_raw <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>type, <span class="at">values_to =</span><span class="st">"value"</span>, <span class="at">names_to =</span> <span class="st">"date"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">date =</span> zoo<span class="sc">::</span><span class="fu">as.yearmon</span>(date, <span class="st">"%Y.%m"</span>),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">color_label =</span> <span class="fu">case_when</span>(type <span class="sc">==</span><span class="st">'경유'</span><span class="sc">~</span> type,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                                 type <span class="sc">==</span><span class="st">"도시가스"</span> <span class="sc">~</span> type,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                                 <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">'기타'</span>))</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(price_tidy<span class="sc">$</span>date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "1 2014" "7 2023"</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>price_img <span class="ot">&lt;-</span> price_tidy <span class="sc">%&gt;%</span> </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span>. <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span>type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"도시가스"</span>, <span class="st">"경유"</span>)), <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> value, <span class="at">group =</span> type), <span class="at">linewidth =</span> <span class="fl">1.2</span>,  <span class="at">color =</span><span class="st">"gray"</span>)<span class="sc">+</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span>. <span class="sc">%&gt;%</span> <span class="fu">filter</span>(type <span class="sc">==</span><span class="st">"경유"</span>), <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> value), <span class="at">linewidth =</span> <span class="fl">1.5</span>,  <span class="at">color =</span><span class="st">"red"</span>)<span class="sc">+</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span>. <span class="sc">%&gt;%</span> <span class="fu">filter</span>(type <span class="sc">==</span><span class="st">"도시가스"</span>), <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> value), <span class="at">linewidth =</span> <span class="fl">1.5</span>,  <span class="at">color =</span><span class="st">"blue"</span>)<span class="sc">+</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">"nanumgothic"</span>))<span class="sc">+</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="st">"물가지수에서 경유와 도시가스만 표기"</span>,</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span><span class="st">"물가지수에서 에너지가 차지하는 정도를 보기 위해 만들었다"</span>)</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>price_img</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>price_img <span class="ot">&lt;-</span> price_tidy <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span>. <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span>type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"도시가스"</span>, <span class="st">"경유"</span>)), <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> value, <span class="at">group =</span> type), <span class="at">linewidth =</span> <span class="fl">1.2</span>,  <span class="at">color =</span><span class="st">"gray"</span>)<span class="sc">+</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span>. <span class="sc">%&gt;%</span> <span class="fu">filter</span>(type <span class="sc">==</span><span class="st">"경유"</span>), <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> value), <span class="at">linewidth =</span> <span class="fl">1.5</span>,  <span class="at">color =</span><span class="st">"red"</span>)<span class="sc">+</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span>. <span class="sc">%&gt;%</span> <span class="fu">filter</span>(type <span class="sc">==</span><span class="st">"도시가스"</span>), <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> value), <span class="at">linewidth =</span> <span class="fl">1.5</span>,  <span class="at">color =</span><span class="st">"blue"</span>)<span class="sc">+</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family=</span><span class="st">"nanumgothic"</span>))<span class="sc">+</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="st">"물가지수에서 경유와 도시가스만 표기"</span>,</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span><span class="st">"물가지수에서 에너지가 차지하는 정도를 보기 위해 만들었다"</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>price_img</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="project_with_code_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" style="width:80.0%"></p>
 </div>
 </div>
+<p><img src="경유와%20휘발유.png" class="img-fluid"></p>
 <ul>
-<li>주어진 10개의 물가지수 중 어떤 걸 강조할 것인지 - 스토레 텔링</li>
+<li>주어진 10개의 물가지수 중 어떤 걸 강조할 것인지 - 스토리텔링</li>
 <li>도시가스? 전기료? 휘발유? 경유?</li>
 </ul>
 <p>참고 유튜브</p>
 <p><a href="https://youtu.be/rkQREY_FfqI?si=e9PxnzjNstY6CjVY">Applying concepts from Storytelling with Data in R using ggplot2</a></p>
-<section id="텍스트-분석" class="level2">
-<h2 class="anchored" data-anchor-id="텍스트-분석">텍스트 분석</h2>
-
-
 </section>
+<section id="암모니아-수용성-분석" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> 암모니아 수용성 분석</h1>
+<ul>
+<li>목적: 암모니아 수용성 분석 결과 시각화</li>
+<li>주요 내용
+<ul>
+<li>암모니아의 폭발, 독성, 냄새에 대한 일반 국민의 수용성 분석</li>
+<li>일반 국민의 개인 특성에 따른 수용성 분석</li>
+</ul></li>
+</ul>
+</section>
+<section id="rd-프로젝트의-위험-요인과-위험-관리-전략-분석" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> R&amp;D 프로젝트의 위험 요인과 위험 관리 전략 분석</h1>
+<ul>
+<li>목적: 네트워크 분석을 통해 R&amp;D 프로젝트의 위험 요인 간 상관관계와 위험 관리 전략 분석</li>
+</ul>
+</section>
+<section id="신재생에너지-잠재량-vs-신재생에너지-발전량" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> 신재생에너지 잠재량 Vs 신재생에너지 발전량</h1>
+<ul>
+<li>태양광 중심의 신재생에너지 잠재량 대비 신재생에너지 발전량을 비교하여 지도 형태로 제시</li>
+<li>신재생빅데이터연구실의 신재생에너지 기술적 잠재량과 한국에너지공단 신재생에너지센터 보급통계 발전량을 활용</li>
+<li>잠재량은 높으나 보급통계 발전량이 낮을 경우 기술적, 정책적 해결책 제시 등으로 발전(가능하다면…)</li>
+</ul>
+</section>
+<section id="텍스트-마이닝을-활용한-정권별-에너지정책-이슈-분석" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> 텍스트 마이닝을 활용한 정권별 에너지정책 이슈 분석</h1>
+<ul>
+<li>에너지정책 관련 언론보도 분석을 통해 에너지정책 분야 주요 이슈의 특징, 경향, 변화 방향 분석</li>
+<li>키워드 동시출현 빈도 네트워크, 키워드 간 상관관계 네트워크 분석 등 수행</li>
+</ul>
+
+
 </section>
 
 </main> <!-- /main -->
