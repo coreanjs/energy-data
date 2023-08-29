@@ -177,7 +177,7 @@ tail(news.selected)
 
 
 
-## 2357개 사설
+## 몇개의 사설??
 nrow(news.selected)
 
 
@@ -563,7 +563,7 @@ news.selected%>%
 
 ```
 
-## 연결중심성   pairwise_count  : 단어 동시 출현 빈도
+## 연결중심성   pairwise_count  : 단어 동시 출현 빈도 (filter >=50)
 
 ```{r}
 
@@ -577,7 +577,7 @@ pairwise_count_1<- news.selected%>%
     pairwise_count(item = word,     ## pairwise_count  : 단어 동시 출현 빈도
                    feature = rowid,
                    sort = T) %>% 
-    filter(n >=200) %>%  ##
+    filter(n >=50) %>%  ##
     as_tbl_graph(directed = F) %>% 
     mutate(centrality = centrality_degree(),        # 연결 중심성 or centrality_edge_betweenness()  참고: https://tidygraph.data-imaginist.com/
            group = as.factor(group_louvain()))  %>% 

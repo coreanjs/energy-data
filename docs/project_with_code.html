@@ -176,7 +176,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#특정-키워드만-미국-보기---미국이-들어간-컬럼만-보기" id="toc-특정-키워드만-미국-보기---미국이-들어간-컬럼만-보기" class="nav-link" data-scroll-target="#특정-키워드만-미국-보기---미국이-들어간-컬럼만-보기"><span class="toc-section-number">5.3</span>  특정 키워드만 (’미국) 보기 - 미국이 들어간 컬럼만 보기</a></li>
   <li><a href="#정권별로-구분해서---count로" id="toc-정권별로-구분해서---count로" class="nav-link" data-scroll-target="#정권별로-구분해서---count로"><span class="toc-section-number">5.4</span>  정권별로 구분해서? - count로</a></li>
   <li><a href="#네트워크-만들기" id="toc-네트워크-만들기" class="nav-link" data-scroll-target="#네트워크-만들기"><span class="toc-section-number">5.5</span>  네트워크 만들기</a></li>
-  <li><a href="#연결중심성-pairwise_count-단어-동시-출현-빈도" id="toc-연결중심성-pairwise_count-단어-동시-출현-빈도" class="nav-link" data-scroll-target="#연결중심성-pairwise_count-단어-동시-출현-빈도"><span class="toc-section-number">5.6</span>  연결중심성 pairwise_count : 단어 동시 출현 빈도</a></li>
+  <li><a href="#연결중심성-pairwise_count-단어-동시-출현-빈도-filter-50" id="toc-연결중심성-pairwise_count-단어-동시-출현-빈도-filter-50" class="nav-link" data-scroll-target="#연결중심성-pairwise_count-단어-동시-출현-빈도-filter-50"><span class="toc-section-number">5.6</span>  연결중심성 pairwise_count : 단어 동시 출현 빈도 (filter &gt;=50)</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -460,7 +460,7 @@ nickname       Beagle Scouts                    </code></pre>
 5 2008-03-10 제민일보   제주,이산화탄소,제주환경,기후변화,느티나무,화… 이명박   
 6 2008-02-29 제민일보   제주,신성장동력산업,문화콘텐츠,제주도,가능성,… 이명박   </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 2357개 사설</span></span>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 몇개의 사설??</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(news.selected)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3102</code></pre>
@@ -929,8 +929,8 @@ nickname       Beagle Scouts                    </code></pre>
 </div>
 </div>
 </section>
-<section id="연결중심성-pairwise_count-단어-동시-출현-빈도" class="level2" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="연결중심성-pairwise_count-단어-동시-출현-빈도"><span class="header-section-number">5.6</span> 연결중심성 pairwise_count : 단어 동시 출현 빈도</h2>
+<section id="연결중심성-pairwise_count-단어-동시-출현-빈도-filter-50" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="연결중심성-pairwise_count-단어-동시-출현-빈도-filter-50"><span class="header-section-number">5.6</span> 연결중심성 pairwise_count : 단어 동시 출현 빈도 (filter &gt;=50)</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>pairwise_count_1<span class="ot">&lt;-</span> news.selected<span class="sc">%&gt;%</span> </span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(keyword) <span class="sc">%&gt;%</span> </span>
@@ -942,7 +942,7 @@ nickname       Beagle Scouts                    </code></pre>
 <span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pairwise_count</span>(<span class="at">item =</span> word,     <span class="do">## pairwise_count  : 단어 동시 출현 빈도</span></span>
 <span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>                   <span class="at">feature =</span> rowid,</span>
 <span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> </span>
-<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(n <span class="sc">&gt;=</span><span class="dv">200</span>) <span class="sc">%&gt;%</span>  <span class="do">##</span></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(n <span class="sc">&gt;=</span><span class="dv">50</span>) <span class="sc">%&gt;%</span>  <span class="do">##</span></span>
 <span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as_tbl_graph</span>(<span class="at">directed =</span> F) <span class="sc">%&gt;%</span> </span>
 <span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">centrality =</span> <span class="fu">centrality_degree</span>(),        <span class="co"># 연결 중심성 or centrality_edge_betweenness()  참고: https://tidygraph.data-imaginist.com/</span></span>
 <span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>           <span class="at">group =</span> <span class="fu">as.factor</span>(<span class="fu">group_louvain</span>()))  <span class="sc">%&gt;%</span> </span>
