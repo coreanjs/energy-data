@@ -55,7 +55,7 @@ price_tidy_img <- price_tidy %>%
     theme_bw()+
   theme_minimal()+
   theme(plot.title = element_text(size = 24, family="nanumgothic"),
-        plot.subtitle =element_markdown(),
+        plot.subtitle =element_markdown(size = 20),
         plot.background =element_rect(fill="white"),
         panel.grid.minor = element_blank())+
   labs(title ="통계청 생활물가지수를 통해서 보는 에너지 물가",
