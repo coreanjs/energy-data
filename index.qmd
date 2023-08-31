@@ -64,6 +64,19 @@ KIER 기술정책플랫폼 업무 참여자 : 안지석, 최지영 이화랑
     -   [Markdown](https://gist.github.com/ihoneymon/652be052a0727ad59601)
 -   데이터분석/시각화는 언제든 협조
 
+
+## R, Data science 등 참고 사이트
+
+- [R 텍스트 마이닝](https://r2bit.com/book_tm/)
+- [Quarto 데이터 사이언스](https://r2bit.com/quarto/writing/)
+- [R로 배우는 기초 통계](https://greendaygh.github.io/Rstat2019/)
+- [디지털미디어와 빅데이터: 5주차 강의](https://rstudio-pubs-static.s3.amazonaws.com/749877_f992c9daeddd4f75b742899a08c3f01d.html)
+- [빅데이터 분석 및 실습](http://bigdata.dongguk.ac.kr/lectures/bigdata/_book/)
+- [Data Visualization with R](https://rkabacoff.github.io/datavis/)
+- [R for Data Science](https://r4ds.had.co.nz/index.html)
+- [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-book.org/)
+- [Text Mining for Social Scientists](https://bookdown.org/f_lennert/text-mining-book/)
+
 ## 요청 사항(8-22까지)
 
 어떤 콘텐츠를 기획하고 제작할지 개인당 3개 이상씩 조사

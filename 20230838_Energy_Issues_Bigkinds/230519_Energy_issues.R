@@ -663,7 +663,7 @@ news.keyword.is.na %>%
     select(-is_na) %>% 
     rename(value = pct) %>% 
     pivot_longer(-c(word, value, row_number), names_to = "president", values_to = 'pct') %>% 
-    filter(row_number<= 30) %>% 
+    filter(row_number<= 50) %>% 
     ggplot(aes(x = reorder(word, pct, sum), y = pct, fill = president))+
     geom_col()+
     coord_flip()+
