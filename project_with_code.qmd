@@ -830,5 +830,5 @@ elec_independency_raw %>%
 
 ```
 
-
+![](KESIS_elec_independency_facet.png)
 
