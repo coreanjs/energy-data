@@ -108,6 +108,7 @@ news.selected <- news.selected %>% filter(complete.cases(news.selected))
 
 head(news.selected)
 
+
 tail(news.selected)
 
 
@@ -334,6 +335,121 @@ news.selected %>%
     labs(title = '미국이 들어간 칼럼만 추출한 결과',
          y = '사설 수',
          x = '날짜')
+
+
+
+
+### 특정 키워드만 ('요금) 보기  - 미국이 들어간 컬럼만 보기
+news.selected %>% 
+  mutate(keyword_detect = ifelse(str_detect(keyword, '요금'), 'Y', 'N')) %>% 
+  filter(keyword_detect =='Y') %>% 
+  separate_rows(keyword, sep= ",") %>% 
+  rename(word = keyword) %>% 
+  filter(str_length(word) > 1) %>% 
+  count(president, word, sort = TRUE) %>% 
+  group_by(president) %>%
+  mutate(row_number = row_number(),
+         word = reorder_within(word, n, president)) %>% 
+  slice(1:20) %>% 
+  ggplot(aes(x = word, y = n))+
+  geom_col(fill ="#1f5c99")+
+  coord_flip()+
+  scale_x_reordered()+
+  facet_wrap(~president, scales = "free_y", nrow = 1)+
+  theme(
+    text = element_text(family = 'Nanum Myeongjo'),
+    panel.grid.minor.x = element_blank(),
+    plot.title = element_text(size = 20),
+    #panel.grid.major.x = element_blank(),
+    #    panel.grid.major.y = element_blank(),
+    #axis.text.x = element_blank(),
+    axis.text.y = element_text(size = 12),
+    axis.ticks.x = element_blank(),
+    strip.text.x = element_text(size = 11),
+    legend.position = "none")+
+  labs(title = '요금이 들어간 칼럼만 추출한 결과',
+       y = '사설 수',
+       x = '날짜')
+
+keyword_one<- "태양광"
+news.selected %>% 
+  mutate(keyword_detect = ifelse(str_detect(keyword, keyword_one), 'Y', 'N')) %>%
+  filter(keyword_detect =='Y') %>% 
+  separate_rows(keyword, sep= ",") %>% 
+  rename(word = keyword) %>% 
+  filter(str_length(word) > 1) %>% 
+  count(president, word, sort = TRUE) %>% 
+  group_by(president) %>%
+  mutate(row_number = row_number(),
+         word = reorder_within(word, n, president)) %>% 
+  slice(1:20) %>% 
+  ggplot(aes(x = word, y = n))+
+  geom_col(fill ="#1f5c99")+
+  coord_flip()+
+  scale_x_reordered()+
+  facet_wrap(~president, scales = "free_y", nrow = 1)+
+  theme(
+    text = element_text(family = 'Nanum Myeongjo'),
+    panel.grid.minor.x = element_blank(),
+    plot.title = element_text(size = 20),
+    #panel.grid.major.x = element_blank(),
+    #    panel.grid.major.y = element_blank(),
+    #axis.text.x = element_blank(),
+    axis.text.y = element_text(size = 12),
+    axis.ticks.x = element_blank(),
+    strip.text.x = element_text(size = 11),
+    legend.position = "none")+
+  labs(title = paste0(keyword_one, '(이/가) 들어간 칼럼만 추출한 결과'),
+       y = '사설 수',
+       x = '날짜')
+
+
+
+
+keyword_one<- "태양광"
+news.selected %>% 
+ # mutate(keyword_detect = ifelse(str_detect(keyword, keyword_one), 'Y', 'N')) %>%
+#  filter(keyword_detect =='Y') %>% 
+  select(keyword) %>% 
+  rowid_to_column() %>% 
+  unnest_tokens(input = keyword,
+                output = word,
+                to_lower = FALSE) %>% 
+  filter(str_length(word) > 1) %>%
+  add_count(word) %>% 
+  filter(n >=20) %>%   ## 절대적 기준 없음
+  ## pairwise_count가 아니고 pairwise_cor 임
+  pairwise_cor(item = word,      
+               feature = rowid,
+               sort = T) %>% 
+  filter(correlation >= 0.2) %>% ## 이거 꼭 넣어야함 안 그럼 개판(절대적 기준 없음) 
+  as_tbl_graph(directed = F) %>% 
+  mutate(centrality = centrality_degree(),        # 연결 중심성 or centrality_edge_betweenness()  참고: https://tidygraph.data-imaginist.com/
+         group = as.factor(
+           group_louvain()
+           #group_infomap()
+         ))  %>%
+  
+  ggraph(layout = "fr") +      # 레이아웃
+  geom_edge_link(color = "gray50",
+                 aes(edge_alpha = correlation,   # 엣지 명암
+                     edge_width = correlation),  # 엣지 두께
+                 show.legend = F) +              # 범례 삭제
+  scale_edge_width(range = c(0.5, 2)) +            # 엣지 두께 범위
+  
+  geom_node_point(aes(size = centrality,
+                      color = group,
+                      alpha = .3),
+                  show.legend = F) +
+  scale_size(range = c(2, 10)) +
+  geom_node_text(aes(label = name),
+                 repel = T,
+                 size = 4,
+                 family = "nanumgothic") +
+  
+  theme_graph()+                          # 배경 삭제
+  labs(title = "1990-2023 신문 사설을 활용한 단어 간 상관관계(phi-coefficient) 네트워크")
+
 
 
 
@@ -887,7 +1003,7 @@ pairwise_count_1<- news.selected%>%
     pairwise_count(item = word,     ## pairwise_count  : 단어 동시 출현 빈도
                    feature = rowid,
                    sort = T) %>% 
-    filter(n >=200) %>%  ##
+    filter(n >=50) %>%  ##
     as_tbl_graph(directed = F) %>% 
     mutate(centrality = centrality_degree(),        # 연결 중심성 or centrality_edge_betweenness()  참고: https://tidygraph.data-imaginist.com/
            group = as.factor(group_louvain()))  %>% 
@@ -909,6 +1025,7 @@ pairwise_count_1<- news.selected%>%
     labs(title = "1990-2023 신문 사설을 활용한 키워드 동시출현빈도 네트워크")
 
 
+pairwise_count_1
 
 ggsave(plot =pairwise_count_1, "pairwise_count_1.png",  width =1000, height = 700, units ="px", dpi = 100)
 
