@@ -36,17 +36,18 @@ region_order
 library(gghighlight)
 library(shadowtext)
 elec_independency_raw %>% 
+  mutate(pct = round(pct, 1)) %>% 
   ggplot(aes(x = year, y = pct, group = as.factor(region))) +
   geom_line(linewidth = 1.2)+
   gghighlight(unhighlighted_params = list(linewidth = 1, colour = alpha("gray80", 0.4)))+
   scale_x_continuous(limits = c(2010, 2021), breaks = c(2011, 2014, 2017, 2020))+
-  facet_wrap(~fct_relevel(region, region_order))+
+  facet_wrap(~fct_relevel(region, region_order), ncol =4)+
   theme(text = element_text(family = 'Nanum Myeongjo',
                             size = 14),
         plot.title = element_markdown(size= 24, face="bold"),
         plot.subtitle = element_markdown(size= 16,lineheight = 1.2),
         axis.text.x = element_text(size = 10),
-        axis.text.y = element_text(size = 14),
+        axis.text.y = element_text(size = 12),
         axis.title.x =element_text(size = 14),
         panel.grid.minor.x = element_blank(),
         #panel.grid.major.y = element_blank(),
@@ -78,7 +79,7 @@ elec_independency_raw %>%
                   family ="Nanum Myeongjo")
 
 
-ggsave("KESIS_elec_independency_facet.png",  width= 800, height = 1000, units ="px", dpi = 100)
+ggsave("KESIS_elec_independency_facet.png",  width= 800, height = 1300, units ="px", dpi = 100)
 
 
 
