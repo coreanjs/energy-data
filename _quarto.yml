@@ -14,7 +14,7 @@ website:
     left: 
       - href: project_with_code.qmd
         text: Energy & Data
-      - href: sector_coupliong.qmd
+      - href: sector_coupling.qmd
         text: Sector Coupling
 editor: visual
 
