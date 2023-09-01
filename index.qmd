@@ -79,6 +79,7 @@ KIER 기술정책플랫폼 업무 참여자 : 안지석, 최지영 이화랑
 - [Network 분석 - community detection](https://lsjsj92.tistory.com/587)
 - [데이터과학 기초-(14)네트워크의 유사도와 군집도](https://velog.io/@00springbom00/데이터과학-기초-14네트워크의-유사도와-군집도)
 - [온라인 커뮤니티 상의 게시글에 대해 louvain method 클러스터링 기법을 적용한 내부 커뮤니티 성향 탐지 기법](https://www.slideshare.net/SunyoungKim14/louvain-method)
+
 ## 요청 사항(8-22까지)
 
 어떤 콘텐츠를 기획하고 제작할지 개인당 3개 이상씩 조사
