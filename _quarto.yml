@@ -13,6 +13,8 @@ website:
   navbar: 
     left: 
       - href: project_with_code.qmd
-        text: contents
+        text: Energy & Data
+      - href: sector_coupliong.qmd
+        text: Sector Coupling
 editor: visual
 

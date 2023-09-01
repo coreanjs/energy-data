@@ -1,0 +1,88 @@
+---
+title: "Sector Coupling"
+date : last-modified # now
+author: 
+ - name: "Jiseok AHN"
+   affiliation: "KAIST"
+title-block-banner: true
+format: 
+  html:
+    theme: flatly
+    code-fold: true
+    toc: true
+   # toc-depth: 2
+    toc-title: 목차
+    number-sections : true
+    #number-depth: 2
+    highlight-style: github
+    self-contained: false
+bibliography: references.bib
+---
+
+# 23.08.25. 한국환경경제학회
+
+## DIETER 모형을 활용한 전기차 섹터커플링의 환경 및 경제적 편익 산정(KEI 최형식)
+
+1.  섹터커플링 효과 연구
+
+-   섹터커플링 없이는 ESS 및 출력 제한이 증가, P2X를 통해 잉여 전력을 활용하고, ESS 대체 가능[@zerrahn2018]
+
+-   적절한 섹터커플링 정책 없이 수송 및 열부분을 전력시스템과 토압 시 전력시스템 비용 급증. 수송부문에서는 전기차 수요반응 참여 및 V2G 정책 활용 필요.[@brown2018]
+
+-   수송 및 열부문 섹터커플링을 통해 ESS 대체가 가능하며, 기타 수소 및 열저장 기술 투자 비용 절감 가능[@victoria2019]
+
+2.  국내 스마트 충전 관련 연구
+
+-   E-mobility 성장에 따른 석유·전력·신재생에너지 산업 대응 전략 연구(전력)[@gimdoweon]
+
+-   전기차 충전의사결정 모형 기반 게시별 요금제에 대한 부하 이전 효과 평가
+
+-   전기차 충전부하 피크는 19시에 가장 높을 것으로 전망
+
+-   계시별 요금제 도입을 통해 부하 변동성 감소
+
+# 관련 논문
+
+## Modeling and simulation of Power-to-X systems: A review[@ince2021]
+
+*  Introduction
+
+    * Today, the share of electricity generation from renewable energy resources is approximately 25% in the world, and it is forecasted that it will have a share of two-thirds of the electricity generation by 2040
+    * An important limitation of the use of RES is the fluctuating nature, which may lead to temporary surplus or lack of electricity and instability in the electric grid network. In this regard, energy storage technologies play an important role in providing a balance between supply and demand in the grid network at different time scales (seconds and subseconds, hourly, daily, and seasonally)
+    *  The capacity of energy storage (e.g, hydrogen, batteries, pumped hydro and compressed air) has increased.
+    *   Hydrogen (H2) is a promising energy carrier, which is versatile, transportable, clean (if produced from renewables), and has the highest gravimetric energy density among other alternatives, but its energy content per volume is comparatively low.
+    *   Hydrogen was produced from natural gas through steam reforming (48%), from the petroleum fraction through steam reforming and partial oxidation (30%), and from coal through gasification (18%), while only about 4% were produced from water through electrolysis in the early 2010 s
+  
+*   Conclusions
+    *   This study(reviews) aims to investigate, compare, and discuss the recent studies (between 2015 and 2020) on **thermodynamic**, **techno-economic**, and **life cycle assessments** of different P-t-X systems.
+    *   (Thermodynamic analysis) the **SOE technology** in steam and co-electrolysis modes is the most preferable electrolyzer technology in the P-t-X systems, among the other electrolyzer types. SOE technology is preferred mainly due to its thermal integration compatibility with other subcomponents.
+    *   (Thermodynamic analysis) the energy requirement for the CO2 capture process. **The membrane-integrated** P-t-X system gives better system performance thermodynamically among the other CO2 capture techniques
+    *   **The methane production system** through the P-t-X concept is the most preferable technology due to fact the synthetic methane can be utilized in many industrial applications (heating, transport, and power production), and can be integrated into available gas transportation infrastructures.
+    * (Techno-economic assessment) **wind and solar** energy sources are the most preferable energy sources. It is also reported that **methanol, DME, and gasoline** are the favourable products in terms of economics, while `the cost of renewable ammonia production` is relatively higher.
+    *  (Life cycle assessment) 18 different indicators are commonly used in the literature, and the most preferred indexes have been **GWI (Global Warming Impact)** and **GHG (Greenhouse Gas Emission)**.
+    *   The physical adsorption techniques in the CO2 capture process are superior to the chemical absorption techniques in terms of life cycle assessment indicators.
+    *   some `P-t-Methane systems` are more harmful in terms of some factors such as metal depletion, water depletion, and terrestrial, marine, and human toxicity compared to the conventional natural gas production system.
+
+## Synergies of sector coupling and transmission reinforcement in a cost-optimised, highly renewable European energy system[@brown2018]
+
+- Introduction
+  - Many studies have been conducted for European electricity sector. But, focusing on the electricity sector means not only neglecting the significant greenhouse gas emissions from **other energy demand sectors, such as heating and transport**, but also ignoring **important sources of flexibility in these sectors**. 
+  - Modelling all energy sectors in high spatial and temporal detail is computationally demanding. Studies of a few sectors have either considered just **electricity - heat**, **electricity - transport**, or **electricity - gas**.
+  - Studies that include multiple sectors, often encompassing all energy usage, but that sacrifice **spatial resolution** have typically either considered single countries or considered the whole continent of Europe without any spatial differentiation.
+  - In this paper both sector coupling and international grid integration are considered in the model **PyPSA-Eur-Sec-30**, the first open, hourly, country-resolved, sector-coupled investment model of the European energy system.
+  
+- Conclusions
+  - The coupling of the heating and transport sectors to electricity in a European context enables both the consideration of a higher share (75%) of the total final energy usage in the model.
+  - The cost-optimal use of battery electric vehicles, synthetic electrofuels such as hydrogen and methane, heat pumps, district heating and long-term thermal energy storage removes the economic case for almost all stationary electricity storage and can reduce total system costs by up to 28%.
+
+- Policy Conclusions
+  - in cost-optimal energy systems with low emissions, wind and solar dominate primary energy generation, while heat pumps dominate heat provision.
+  - electrification of transport is more cost-effective than using synthetic fuels in transport because of efficiency losses when producing the fuels.
+  - The algorithms for managing battery electric vehicle charging should be exposed to dynamic electricity market prices.
+  - District heating in high-density, urban areas with long-term thermal energy storage can significantly reduce costs
+  - For heating systems with multiple technologies (heat pumps, resistive heating, solar thermal collectors and backup gas boilers for cold periods) can be efficient.
+  - Converting power to hydrogen and methane is advantageous in highly renewable systems, and the technologies for methanation and carbon dioxide capture should be developed further in view of this
+  - Finally, there are a variety of different possible paths to a highly renewable energy system, and no significant technical or economic barriers could be identified.
+
+  
+  
