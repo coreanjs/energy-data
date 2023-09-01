@@ -92,6 +92,8 @@ price_img
 
 
 ```{r}
+#| warning: false
+  
 library(zoo)
 library(ggtext)
 price_tidy %>% 
