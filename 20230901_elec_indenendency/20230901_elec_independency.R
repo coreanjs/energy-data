@@ -8,6 +8,7 @@
 
 library(readxl)
 library(tidyverse)
+library(here)
 
 setwd("C:/R/Rproject/Energy&Data/20230901_elec_indenendency")
 
@@ -47,10 +48,10 @@ elec_independency_raw %>%
   scale_y_continuous(limits = c(0, 400),
                      breaks = c(0, 100, 200, 300), 
                      labels = function(x) paste0(x, "%"))+
-  facet_wrap(~fct_relevel(region, region_order), ncol =4)+
+  facet_wrap(~fct_relevel(region, region_order), ncol =5)+
   theme(text = element_text(family = 'Nanum Myeongjo',
                             size = 14),
-        plot.title = element_markdown(size= 24, face="bold"),
+        plot.title = element_markdown(size= 22, face="bold"),
         plot.subtitle = element_markdown(size= 16,lineheight = 1.2),
         axis.text.x = element_text(size = 10),
         axis.text.y = element_text(size = 12),
@@ -62,7 +63,7 @@ elec_independency_raw %>%
         plot.title.position = "plot",
         legend.position = "none"
   )+
-  labs(title = "대한민국 17개 광역지자체별 전력자립도 변화<br> Electricity dependency in South Korea by regions",
+  labs(title = "대한민국 17개 광역지자체별 전력자립도 변화<br> Changes in electricity dependency in South Korea by regions",
        subtitle ="전력자립도는 전략 발전량을 소비량으로 나눈 백분율로, <br> <span style='color:#142f38'>**2011년**</span>부터 <span style ='color:#4ea267'>2020년</span>까지 대한민국 광역지자체별 전력자립도의 변화를 나타내었음",
        x = "",
        y = "전력자립도(%)",
@@ -86,9 +87,11 @@ elec_independency_raw %>%
 
 
 setwd("C:/Users/User/OneDrive - 한국에너지기술연구원/안지석(개인폴더)/230125_energydata_샘플_가이드_png/resources/images/230904_Elec_independency/")
-
-
 ggsave("KESIS_elec_independency_facet.png",  width= 800, height = 1000, units ="px", dpi = 100)
+
+
+setwd("C:/R/Rproject/Energy&Data/20230901_elec_indenendency")
+ggsave(filename = file.path("figs", "KESIS_elec_independency_facet.png"),  width= 800, height = 1000, units ="px", dpi = 100)
 
 
 
@@ -198,7 +201,19 @@ elec_y_position %>%
        x = "전력자립도",
        caption = "Source : KESIS(국가에너지통계 정보시스템),\nGraphic : Jiseok")
 
+
+setwd("C:/Users/User/OneDrive - 한국에너지기술연구원/안지석(개인폴더)/230125_energydata_샘플_가이드_png/resources/images/230904_Elec_independency/")
 ggsave("KESIS_elec_independency.png",  width= 550, height = 800, units ="px", dpi = 100)
+
+
+setwd("C:/R/Rproject/Energy&Data/20230901_elec_indenendency")
+ggsave(filename = file.path("figs", "KESIS_elec_independency.png"),  width= 800, height = 1800, units ="px", dpi = 100)
+
+
+
+
+
+
 
 
 

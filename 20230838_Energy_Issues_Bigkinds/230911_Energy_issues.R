@@ -35,7 +35,7 @@ library(tidytext)
 ## 사전 설치
 
 
-install.packages("remotes")
+#install.packages("remotes")
 
 remotes::install_github('haven-jeon/KoNLP', upgrade = "never",
                         INSTALL_opts=c("--no-multiarch"))
@@ -251,6 +251,7 @@ news.keyword %>%
     facet_wrap(~president, scales = "free_y", nrow = 1)+
     theme(
         text = element_text(family = 'Nanum Myeongjo'),
+        plot.title =element_text(size = 16),
         panel.grid.minor.x = element_blank(),
         #panel.grid.major.x = element_blank(),
         #    panel.grid.major.y = element_blank(),
@@ -258,9 +259,11 @@ news.keyword %>%
         axis.text.y = element_text(size = 12),
         axis.ticks.x = element_blank(),
         strip.text.x = element_text(size = 11),
-        legend.position = "none")+
+        legend.position = "none",
+        plot.title.position = "plot")+
     labs(y = '사설 수',
-         x = '날짜')
+         x = '날짜',
+         title ="전체 키워드 상위 20개(예를 들어)를 보여주는데, 정권별로 구분")
 
 
 
@@ -284,7 +287,7 @@ news.keyword %>%
     ggplot(aes(x = reorder(word, n), y = n))+
     geom_col(fill ="#1f5c99")+
     coord_flip()+
-    theme(
+    theme(   plot.title =element_text(size = 16),
         text = element_text(family = 'Nanum Myeongjo'),
         panel.grid.minor.x = element_blank(),
         #panel.grid.major.x = element_blank(),
@@ -293,9 +296,11 @@ news.keyword %>%
         axis.text.y = element_text(size = 15),
         axis.ticks.x = element_blank(),
         strip.text.x = element_text(size = 11),
-        legend.position = "none")+
+        legend.position = "none",
+        plot.title.position="plot")+
     labs(y = '단어 수',
-         x = '단어')
+         x = '단어',
+         title ="전체 키워드 상위 20개(예를 들어)를 보여주는데, 정권별로 구분 없이")
 
 setwd("C:/Users/User/OneDrive - 한국에너지기술연구원/안지석(개인폴더)/230125_energydata_샘플_가이드_png/resources/images/230607_Energy_Issue")
 
@@ -544,14 +549,24 @@ setwd("C:/Users/User/OneDrive - 한국에너지기술연구원/안지석(개인�
 
 
 
+### 전처리리
+news.keyword_filtered<- news.keyword %>% 
+  mutate(word = str_replace_all(word, '우리나라', '한국/우리나라'),
+         word = str_replace_all(word, '코로나19', '코로나')) %>% 
+  filter(!word %in% c('문재인', '윤석열', '가능성', '이명박', '박근혜'))
+
+    
+
+
 ### 정권별로 구분해서?   - pct로 
-news.keyword %>% 
+news.keyword_filtered %>% 
     group_by(president) %>% 
     mutate(total = sum(n)) %>% 
     ungroup() %>% 
     mutate(pct = n/total*100) %>% 
     #top_n(20) %>% 
-    filter(pct >.4) %>% 
+    filter(pct >.48) %>%
+    #filter(pct >.3) %>% 
     ggplot(aes(x = reorder(word, pct, sum), y = pct, fill = president))+
     geom_col()+
     coord_flip()+
@@ -567,18 +582,19 @@ news.keyword %>%
         #legend.position = "none"
     )+
     labs(
-        x = '단어')
+        x = '단어',
+        title ="전체 단어 중, 단어별 출연 빈도(%)를 정권별로 나타냄- 최고 출연 단어 20개")
 
 
 
 
-news.keyword %>% 
+news.keyword_filtered %>% 
     group_by(president) %>% 
     mutate(total = sum(n)) %>% 
     ungroup() %>% 
     mutate(pct = n/total*100) %>% 
     #top_n(20) %>% 
-    filter(pct >.4) %>% 
+    filter(pct >.48) %>% 
     ggplot(aes(x = reorder(word, pct, sum), y = pct, fill = president))+
     geom_col()+
     coord_flip()+
@@ -594,7 +610,9 @@ news.keyword %>%
         #legend.position = "none"
     )+
     labs(
-        x = '단어')
+        x = '단어',
+        title ="전체 단어 중, 단어별 출연 빈도(%)를 정권별로 나타냄- 최고 출연 단어 20개"
+        )+facet_wrap(~president, nrow =1)
 
 
 
@@ -817,6 +835,8 @@ library(widyr)   ##pairwise_count
 news.keyword
 
 
+news.selected
+
 
 news.selected%>% 
     select(keyword) %>% 
@@ -871,7 +891,7 @@ news.keyword<- news.selected %>%
     rename(word = keyword) %>% 
     filter(str_length(word) > 1) %>% 
     count(president, word, sort = TRUE) %>%
-    filter(!word %in% c('만큼', '그동안', '각국'))
+    filter(!word %in% c('만큼', '그동안', '각국')) ## 전처리
 
 
 
@@ -1070,24 +1090,45 @@ ggsave(plot =centrality_edge_betweenness_1, "centrality_edge_betweenness_1.png",
 
 
 
-
+library(ggraph)
 ## 상관계수 phi-coefficient 
 
 
-phi_coefficient_1<- news.selected%>% 
-    select(keyword) %>% 
+president_name <-c("문재인")
+
+president_name <-c("윤석열")
+
+keyword_name <-c("탄소중립")
+
+## 특정 단어 분석
+news.selected%>% 
+   filter(president == president_name) %>% 
+    select(keyword, president) %>%
+    filter(str_detect(keyword, keyword_name)) %>% 
     rowid_to_column() %>% 
     unnest_tokens(input = keyword,
                   output = word,
                   to_lower = FALSE) %>% 
     filter(str_length(word) > 1) %>%
+    mutate(word =str_replace_all(word, '제주도', '제주'),
+           word =str_replace_all(word, '19', '코로나'),
+           word =str_replace_all(word, '광주시', '광주'),
+           word =str_replace_all(word, '전남도', '전남'),
+           word =str_replace_all(word, '전문가들', '전문가'),
+           word =str_replace_all(word, '울산시', '울산'),
+           word =str_replace_all(word, '서울시', '서울'),
+           word =str_replace_all(word, '충남도', '충남'),
+           word =str_replace_all(word, '경남도', '경남'),
+           word =str_replace_all(word, '부산시', '부산'),
+           ) %>% 
     add_count(word) %>% 
-    filter(n >=200) %>%   ## 절대적 기준 없음
+   filter(n >=10) %>%   ## 절대적 기준 없으나 꼭 필요
     ## pairwise_count가 아니고 pairwise_cor 임
     pairwise_cor(item = word,      
                  feature = rowid,
                  sort = T) %>% 
-    filter(correlation >= 0.20) %>% ## 이거 꼭 넣어야함 안 그럼 개판(절대적 기준 없음) 
+    #filter(item1 %in% c("태양광")) %>% 
+    filter(correlation >= 0.2) %>% ## 이거 꼭 넣어야함 안 그럼 개판(절대적 기준 없음) 
     as_tbl_graph(directed = F) %>% 
     mutate(centrality = centrality_degree(),        # 연결 중심성 or centrality_edge_betweenness()  참고: https://tidygraph.data-imaginist.com/
            group = as.factor(
@@ -1113,7 +1154,7 @@ phi_coefficient_1<- news.selected%>%
                    family = "nanumgothic") +
     
     theme_graph()+                          # 배경 삭제
-    labs(title = "1990-2023 신문 사설을 활용한 단어 간 상관관계(phi-coefficient) 네트워크")
+    labs(title = paste0("전체 기간 키워드:", keyword_name,  "(단어 간 상관관계(phi-coefficient) 네트워크)"))
 
 
 
