@@ -3,7 +3,7 @@ title: "Sector Coupling"
 date : last-modified # now
 author: 
  - name: "Jiseok AHN"
-   affiliation: "KAIST"
+   affiliation: "KIER"
 title-block-banner: true
 format: 
   html:
@@ -45,44 +45,248 @@ bibliography: references.bib
 
 ## Modeling and simulation of Power-to-X systems: A review[@ince2021]
 
-*  Introduction
+-   Introduction
 
-    * Today, the share of electricity generation from renewable energy resources is approximately 25% in the world, and it is forecasted that it will have a share of two-thirds of the electricity generation by 2040
-    * An important limitation of the use of RES is the fluctuating nature, which may lead to temporary surplus or lack of electricity and instability in the electric grid network. In this regard, energy storage technologies play an important role in providing a balance between supply and demand in the grid network at different time scales (seconds and subseconds, hourly, daily, and seasonally)
-    *  The capacity of energy storage (e.g, hydrogen, batteries, pumped hydro and compressed air) has increased.
-    *   Hydrogen (H2) is a promising energy carrier, which is versatile, transportable, clean (if produced from renewables), and has the highest gravimetric energy density among other alternatives, but its energy content per volume is comparatively low.
-    *   Hydrogen was produced from natural gas through steam reforming (48%), from the petroleum fraction through steam reforming and partial oxidation (30%), and from coal through gasification (18%), while only about 4% were produced from water through electrolysis in the early 2010 s
-  
-*   Conclusions
-    *   This study(reviews) aims to investigate, compare, and discuss the recent studies (between 2015 and 2020) on **thermodynamic**, **techno-economic**, and **life cycle assessments** of different P-t-X systems.
-    *   (Thermodynamic analysis) the **SOE technology** in steam and co-electrolysis modes is the most preferable electrolyzer technology in the P-t-X systems, among the other electrolyzer types. SOE technology is preferred mainly due to its thermal integration compatibility with other subcomponents.
-    *   (Thermodynamic analysis) the energy requirement for the CO2 capture process. **The membrane-integrated** P-t-X system gives better system performance thermodynamically among the other CO2 capture techniques
-    *   **The methane production system** through the P-t-X concept is the most preferable technology due to fact the synthetic methane can be utilized in many industrial applications (heating, transport, and power production), and can be integrated into available gas transportation infrastructures.
-    * (Techno-economic assessment) **wind and solar** energy sources are the most preferable energy sources. It is also reported that **methanol, DME, and gasoline** are the favourable products in terms of economics, while `the cost of renewable ammonia production` is relatively higher.
-    *  (Life cycle assessment) 18 different indicators are commonly used in the literature, and the most preferred indexes have been **GWI (Global Warming Impact)** and **GHG (Greenhouse Gas Emission)**.
-    *   The physical adsorption techniques in the CO2 capture process are superior to the chemical absorption techniques in terms of life cycle assessment indicators.
-    *   some `P-t-Methane systems` are more harmful in terms of some factors such as metal depletion, water depletion, and terrestrial, marine, and human toxicity compared to the conventional natural gas production system.
+    -   Today, the share of electricity generation from renewable energy resources is approximately 25% in the world, and it is forecasted that it will have a share of two-thirds of the electricity generation by 2040
+    -   An important limitation of the use of RES is the fluctuating nature, which may lead to temporary surplus or lack of electricity and instability in the electric grid network. In this regard, energy storage technologies play an important role in providing a balance between supply and demand in the grid network at different time scales (seconds and subseconds, hourly, daily, and seasonally)
+    -   The capacity of energy storage (e.g, hydrogen, batteries, pumped hydro and compressed air) has increased.
+    -   Hydrogen (H2) is a promising energy carrier, which is versatile, transportable, clean (if produced from renewables), and has the highest gravimetric energy density among other alternatives, but its energy content per volume is comparatively low.
+    -   Hydrogen was produced from natural gas through steam reforming (48%), from the petroleum fraction through steam reforming and partial oxidation (30%), and from coal through gasification (18%), while only about 4% were produced from water through electrolysis in the early 2010 s
+
+-   Conclusions
+
+    -   This study(reviews) aims to investigate, compare, and discuss the recent studies (between 2015 and 2020) on **thermodynamic**, **techno-economic**, and **life cycle assessments** of different P-t-X systems.
+    -   (Thermodynamic analysis) the **SOE technology** in steam and co-electrolysis modes is the most preferable electrolyzer technology in the P-t-X systems, among the other electrolyzer types. SOE technology is preferred mainly due to its thermal integration compatibility with other subcomponents.
+    -   (Thermodynamic analysis) the energy requirement for the CO2 capture process. **The membrane-integrated** P-t-X system gives better system performance thermodynamically among the other CO2 capture techniques
+    -   **The methane production system** through the P-t-X concept is the most preferable technology due to fact the synthetic methane can be utilized in many industrial applications (heating, transport, and power production), and can be integrated into available gas transportation infrastructures.
+    -   (Techno-economic assessment) **wind and solar** energy sources are the most preferable energy sources. It is also reported that **methanol, DME, and gasoline** are the favourable products in terms of economics, while `the cost of renewable ammonia production` is relatively higher.
+    -   (Life cycle assessment) 18 different indicators are commonly used in the literature, and the most preferred indexes have been **GWI (Global Warming Impact)** and **GHG (Greenhouse Gas Emission)**.
+    -   The physical adsorption techniques in the CO2 capture process are superior to the chemical absorption techniques in terms of life cycle assessment indicators.
+    -   some `P-t-Methane systems` are more harmful in terms of some factors such as metal depletion, water depletion, and terrestrial, marine, and human toxicity compared to the conventional natural gas production system.
 
 ## Synergies of sector coupling and transmission reinforcement in a cost-optimised, highly renewable European energy system[@brown2018]
 
-- Introduction
-  - Many studies have been conducted for European electricity sector. But, focusing on the electricity sector means not only neglecting the significant greenhouse gas emissions from **other energy demand sectors, such as heating and transport**, but also ignoring **important sources of flexibility in these sectors**. 
-  - Modelling all energy sectors in high spatial and temporal detail is computationally demanding. Studies of a few sectors have either considered just **electricity - heat**, **electricity - transport**, or **electricity - gas**.
-  - Studies that include multiple sectors, often encompassing all energy usage, but that sacrifice **spatial resolution** have typically either considered single countries or considered the whole continent of Europe without any spatial differentiation.
-  - In this paper both sector coupling and international grid integration are considered in the model **PyPSA-Eur-Sec-30**, the first open, hourly, country-resolved, sector-coupled investment model of the European energy system.
-  
-- Conclusions
-  - The coupling of the heating and transport sectors to electricity in a European context enables both the consideration of a higher share (75%) of the total final energy usage in the model.
-  - The cost-optimal use of battery electric vehicles, synthetic electrofuels such as hydrogen and methane, heat pumps, district heating and long-term thermal energy storage removes the economic case for almost all stationary electricity storage and can reduce total system costs by up to 28%.
+-   Introduction
+    -   Many studies have been conducted for European electricity sector. But, focusing on the electricity sector means not only neglecting the significant greenhouse gas emissions from **other energy demand sectors, such as heating and transport**, but also ignoring **important sources of flexibility in these sectors**.
+    -   Modelling all energy sectors in high spatial and temporal detail is computationally demanding. Studies of a few sectors have either considered just **electricity - heat**, **electricity - transport**, or **electricity - gas**.
+    -   Studies that include multiple sectors, often encompassing all energy usage, but that sacrifice **spatial resolution** have typically either considered single countries or considered the whole continent of Europe without any spatial differentiation.
+    -   In this paper both sector coupling and international grid integration are considered in the model **PyPSA-Eur-Sec-30**, the first open, hourly, country-resolved, sector-coupled investment model of the European energy system.
+-   Conclusions
+    -   The coupling of the heating and transport sectors to electricity in a European context enables both the consideration of a higher share (75%) of the total final energy usage in the model.
+    -   The cost-optimal use of battery electric vehicles, synthetic electrofuels such as hydrogen and methane, heat pumps, district heating and long-term thermal energy storage removes the economic case for almost all stationary electricity storage and can reduce total system costs by up to 28%.
+-   Policy Conclusions
+    -   in cost-optimal energy systems with low emissions, wind and solar dominate primary energy generation, while heat pumps dominate heat provision.
+    -   electrification of transport is more cost-effective than using synthetic fuels in transport because of efficiency losses when producing the fuels.
+    -   The algorithms for managing battery electric vehicle charging should be exposed to dynamic electricity market prices.
+    -   District heating in high-density, urban areas with long-term thermal energy storage can significantly reduce costs
+    -   For heating systems with multiple technologies (heat pumps, resistive heating, solar thermal collectors and backup gas boilers for cold periods) can be efficient.
+    -   Converting power to hydrogen and methane is advantageous in highly renewable systems, and the technologies for methanation and carbon dioxide capture should be developed further in view of this
+    -   Finally, there are a variety of different possible paths to a highly renewable energy system, and no significant technical or economic barriers could be identified.
 
-- Policy Conclusions
-  - in cost-optimal energy systems with low emissions, wind and solar dominate primary energy generation, while heat pumps dominate heat provision.
-  - electrification of transport is more cost-effective than using synthetic fuels in transport because of efficiency losses when producing the fuels.
-  - The algorithms for managing battery electric vehicle charging should be exposed to dynamic electricity market prices.
-  - District heating in high-density, urban areas with long-term thermal energy storage can significantly reduce costs
-  - For heating systems with multiple technologies (heat pumps, resistive heating, solar thermal collectors and backup gas boilers for cold periods) can be efficient.
-  - Converting power to hydrogen and methane is advantageous in highly renewable systems, and the technologies for methanation and carbon dioxide capture should be developed further in view of this
-  - Finally, there are a variety of different possible paths to a highly renewable energy system, and no significant technical or economic barriers could be identified.
+# 23.09.21 착수회의
 
-  
-  
+-   회의비 집행 관련
+
+    -   회의비는 외부인 있어야 집행 가능
+
+    -   외부인 기업체 사람 넣는게 편하다...?
+
+<!-- -->
+
+-   연구목표
+
+    -   섹터커플링 기술의 에너지 환경 측면의 파급효과 분석
+
+    -   일반적인 섹터커플링 기술 뿐 아니라 연구단에서 개발하는 기술포함
+
+    -   재생에너지 수용성 확대 측면의 분석 필요
+
+    -   논문 쓰는 게 목표
+
+-   분석범위
+
+    -   고희상 박사님 경우 - 독립 실증 단지(JGRC)
+    -   분산독립전원이면 장기가 아닌 단기
+    -   제주도, 국가 단위라면 중장기
+
+-   1단계 연구내용 : 모형 개발 - 섹터커플링 전반, 기술DB (문헌조사)
+
+    -   1단계 상황에서 데이터를 받을 만한 게 별로 없다;;;. 우리가 역으로 수치를 도출해서 제시해야 할 것.
+
+-   2단계 연구내용 : 모형 보완 (연구댄 개발 기술 상세화), 기술DB(연구단 개발 결과)
+
+## P2X 전환 시나리오 개발 - 핵심 연구내용
+
+-   P2X 전환 시나리오 개발 내용 및 절차
+
+    -   기술 발전, 경제 및 정책 변화, 사회적 수용성 등 섹터커플링 전환에 영향을 미치는 다양한 요인 발굴
+
+    -   요인별 미래 변화에 대한 합리적 가정 도출 및 정략적 지표화
+
+    -   요인별 미래 전망치들에 대한 조합을 통해 다양한 섹터커플링 전환 시나리오 개발
+
+    -   섹터커플링 파급효과 분석을 위한 시나리오로 활용 및 섹터커플링 사업화 촉진 \]및 기술 확산 보고서 작성에 활용
+
+## 섹터커플링 파급효과 분석 - 핵심 연구내용
+
+-   에너지시스템 모형 개발 및 파급효과 분석
+
+    -   기존 기술 외에 미래 혁신 섹터커플링 기술까지 고려한 통합 분석이 가능한 에너지시스템 모형 개발
+
+    -   타 융합과제의 실증연구결과를 활용할 수 있도록 에너지시스템 모형 상세화 수행
+
+    -   섹터커플링 전환 시나리오별 에너지 환경 경제 측면의 다양한 파급효과 분석
+
+    -   주요 요인들에 대한 민감도 분석을 통해 섹터커플링 보급 및 파급효과에 영향 미치는 요인 심층 분석
+
+    ## 향후 추진 계획
+
+    ::: callout-note
+    -   전자 연구 노트 신청
+
+    <!-- -->
+
+    -   1차년도 업무분장 및 세부 추진계획 수립
+
+        -   개인별 업무 구분 - 행정 업무 포함
+
+        -   자체 연구 및 용역/자문 추진 업무 구분
+
+        -   2주 단위 세부 추진계획 수립
+
+    -   
+
+    -   w
+    :::
+
+# 23.10.04 2차 회의
+
+-   용역 2천만원으로 세 군대로 나눠서 진행
+
+-   기후실에서 용역사 추천 받을 예정이며, 미팅 추진 필요
+
+# 23.10.05\_ 전력수급 여건 변화와 대응과제
+
+## 에너지원으로서 전기의 특성
+
+-   **생산과 소비가 동시에 발생**. 수요-공급 불일치시 계통불안으로 광역정전 발생 가능. 정확한 수요예측과 충분한 발전력을 바탕으로 정밀한 실시간 수급관리 필요
+
+-   **대규모 저장이 곤란.** 석유/석탄/가스 등 화석연료는 비축이 가능하기에 비상시 재고 활용. 전기를 저장하는 ESS는 기술여건과 경제성이 아직 부족
+
+-   수요와 공급이 **비탄력**
+
+    -   **전력수요의 비탄력성**: 요금이 올라도 쓸 수 밖에 없음. 다른 에너지원으로 대체가 곤란하며, 한번 전기를 사용하기 시작한 소비자는 계속 사용(ex.에어컨)
+
+    -   **전력공급의 비탄력성**: 가격이 올라도 당장 더 만들기는 어려워. 설비 건설에 장기 기간이 소요(LNG 6년, 양수 10년, 대형 송전선로 13년, 해상풍력/원전 ??). 막대한 건설비. 1GW 용량 발전소 건설시 1\~3조원 소요 추정
+
+## 전력수급기본계획
+
+-   수립근거와 성격
+
+    -   법적근거 : 전기사업법 제25조
+
+    -   수립주기 : 매2년마다 수립(전기사업법 시행령 제15조)
+
+    -   계획기간 : 15년(ex. 10차 전력수급기본계획 : 2022\~2036)
+
+-   계획의 내용과 성격
+
+    -   주요 내용 : 수요 공급 장기전망, 발전송전 설비계획, 수요관리, 온실가스 감축방안 등
+
+    -   목표계획 : 수급전망, 설비계획, 적정예비율, 발전량믹스 등 정책방향 제시
+
+    -   실행 계획 : 신규 발전설비 건설을 위한 허가의 근거
+
+-   수요예측과 발전원 구성
+
+    -   수요예측 : 미래의 전력수요(소비량, 최대전력) 예측. 다양한 변수 고려. 경제성장률, 인구변화 전망, 산업구조와 생활양식 변화, 기후변화 등
+
+    -   발전원의 구성 : 예측된 수요를 바탕으로 필요설비 도출. 미래에 필요한 발전원의 종류와 용량 결정. 안정성, 경제성, 환경성 등 고려
+
+-   제10차 전력수급기본계획('23.1.12)
+
+    -   제8차, 제9차 전기본 : 탈워전 및 탈석찬, 신재생 중심의 에너지 전환
+
+    -   제10차: 실현 가능하고 균형잡힌 전원믹스, 원전 활용, 적정 수준의 재생에너지
+
+## 최근 전력수급 여건 변화
+
+-   **전력수요** 여건 변화
+
+    -   첨단산업 신규투자 확대 : 반도체, 바이오, 이차전지 등\<국가첨단산업 육성전략\> 발표('23.3). 대규모 신규투자 계획
+
+        -   용인 시스템 반도체 첨단산단 등 전력 다소비 첨단산업 투자로 전력수요 증가 예상
+
+        -   용인 반도체 산단 전력수요 10GW 내외 전망. 현재 수도줜 최대 전력수요(40GW)의 1/4 수준
+
+    -   데이터 센터 증가: 국내 데이터센터 건설 의향은 계속 증가 추세
+
+        -   AI기반 플랫폼( Chat GPT 등), 메타버스 등 IT 산업 확대 감안시 수요 증가요인 상당
+
+    -   전기화에 따른 전력수요 증가
+
+        -   화석연료를 사용하던 기술과 공정을 전기를 사용하도록 변환시키는 과정
+
+        -   전기화에 따른 전력수요를 어느정도로 평가할지에 따라 장기 전력수요 전망에 편차 발생
+
+-   **전력공급** 여건 변화
+
+    -   신재생에너지 보급 상황
+
+        -   주민수용성 문제, 계통연결 지연 등으로 신규설비 보급이 다소 둔화되는 추세
+
+        -   제10차 전력수급기본계획 신재생 목표 달성을 위해서는 연 5GW 이상의 보급 필요
+
+        -   발전사업의 실현가능성과 전력공급 기여도를 점검하여 현실성 있는 중장기 전망 제시 필요
+
+    -   수소 발전 본격 추진
+
+        -   10차 전력수급기본계획: 수소-LNG 혼소, 석탄-암모니아 혼소 반영
+
+        -   수소발전 입찰시장 개설('23.6월): 일반수소(연료전지 중심), 청정수소(혼소발전 중심). 일반시장 입찰시장은 '25년부터, 청정수소 발전시장은 '27년부터 상업운전 개시
+
+        -   혼소발전기 신규건설 혹은 대체건설(노후 LNG등 대체), 대체건설 대상 발전기 선정 등 필요
+
+    -   국가온실가스감축폭표(NDC) 상향
+
+        -   \<국가 탄소중립 녹색성장 기본계획\> 수립('23.4) : 전환부문 2030년 NDC 4백만톤 상향
+
+        -   무탄소전원(Carbon free energy)의 발전비중 상향 필요. 원전, 해상풍력 등 건설에 장기 소요되는 전원은 활용이 어려운 측면. 태양광, 육상풍력, 재생e 또는 수소발전 확대가 불가피하나, 어느 하나만 택하기엔 곤란
+
+## 정책과제와 추진 방향
+
+-   향후 전력수급계획의 과제
+
+    -   상충관계에 있는 에너지정책 목표의 합리적 조화 추구
+
+        -    전력공급의 안정성을 최우선으로 하되, 경제성과 탄소중립 등 다른 중요 목표도 조화
+
+    -   경직성/변동성 전원을 보완하는 유연성 전원 적정 확보
+
+        -   탄소중립 추구에 따라 출력조정이 어려운 재생e 확대가 불가피(경직성 전원)
+
+        -   재생e 확대시 기상상황에 따라 간헐성으로 수급 불안 요인 증가(변동성 전원)
+
+        -   양수발전, ESS 등 유연선 전원을 적정 확보하면서 경직성 전원의 유연화 필요
+
+-   **제11차 전력수급기본계획 추진 방향**
+
+    -   미래 산업발전과 전기화를 감안한 과학적 수요 산정
+
+        -   첨단산단과 데이터센터 등 수요확대 요인이 미칠 영향을 평가하여 수요전망에 반영
+
+        -    기술개발 전망 등을 감안하여 전기화 수요 정밀 반영
+
+        -   **`제10차 전력수급기본계획의 경우 기술개발의 불확실성을 감안하여, 모형 도출 결과의 일부만 반영`**
+
+    -   전원별 특성을 고려한 입체적 전원믹스 구성
+
+        -   무탄소 전원을 지속 보급하되, 기술발전 등을 감안하여 안정성 보완방안 마련
+
+        -   실현가능한 재생E보급목표 반영하고, 노후 화력발전설비 활용방안(혼소발전 등) 검토 필요
+
+    -   스마트하고 유연한 전력시스템 구축
+
+        -   적정한 규모의 유연성 자원을 확충하여 어떤 상황에도 대응 가능한 전력시스템 구축
+
+        -   IT 기술을 활용한 수요반응자원(DR) 활성화, 화력발전 유연성 향상, 재생e 예측력 제고 등 추진

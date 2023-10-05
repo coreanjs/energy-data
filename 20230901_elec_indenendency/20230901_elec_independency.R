@@ -95,6 +95,78 @@ ggsave(filename = file.path("figs", "KESIS_elec_independency_facet.png"),  width
 
 
 
+## beautiful plotting with cedric
+library(ggtext)
+
+??element_textbox_highlight
+
+elec_independency_raw %>% 
+  mutate(pct = round(pct, 1)) %>% 
+  ggplot(aes(x = year, y = pct, group = as.factor(region))) +
+  geom_line(linewidth = 1.2, color ="#282c34")+
+  gghighlight(unhighlighted_params = list(linewidth = 1, colour = alpha("gray80", 0.3)))+
+  scale_x_continuous(limits = c(2010, 2021), breaks = c(2011, 2014, 2017, 2020))+
+  scale_y_continuous(limits = c(0, 400),
+                     breaks = c(0, 100, 200, 300), 
+                     labels = function(x) paste0(x, "%"))+
+  facet_wrap(~fct_relevel(region, region_order), ncol =4)+
+  theme(text = element_text(family = 'Nanum Myeongjo',
+                            size = 14),
+        plot.title = element_markdown(size= 22, face="bold"),
+        plot.subtitle = element_markdown(size= 16,lineheight = 1.2),
+        axis.text.x = element_text(size = 10),
+        axis.text.y = element_text(size = 12),
+        axis.title.x =element_text(size = 12),
+        panel.grid.minor.x = element_blank(),
+        #panel.grid.major.y = element_blank(),
+        panel.grid.major.x = element_blank(),
+        panel.grid.minor.y = element_blank(),
+        plot.title.position = "plot",
+        legend.position = "none",
+        strip.background = element_blank(),
+        strip.text = element_text(face ="bold", size = 16, hjust = 0, vjust = 0)
+  )+
+
+  labs(title = "대한민국 17개 광역지자체별 전력자립도 변화<br> Changes in electricity dependency in South Korea by regions",
+       subtitle ="전력자립도는 전략 발전량을 소비량으로 나눈 백분율로, <br> <span style='color:#142f38'>**2011년**</span>부터 <span style ='color:#4ea267'>2020년</span>까지 대한민국 광역지자체별 전력자립도의 변화를 나타내었음",
+       x = "",
+       y = "전력자립도(%)",
+       caption = "Source : KESIS(국가에너지통계 정보시스템),\nGraphic : Jiseok")+
+  geom_point(data =. %>% filter(year %in% c(2011)))+
+  geom_point(data =. %>% filter(year %in% c(2016) & region =="세종"))+
+  geom_point(data =. %>% filter(year %in% c(2020)), color ="#4ea267", size = 2)+
+  geom_shadowtext(data =. %>% filter(year ==2016 & region =="세종"), aes(label = pct), hjust = 1, vjust = -.4, 
+                  bg.color ="white",
+                  color ="black",
+                  family ="Nanum Myeongjo")+
+  
+  geom_shadowtext(data =. %>% filter(year ==2011), aes(label = pct), hjust = 0.3, vjust = -.8, 
+                  bg.color ="white",
+                  color ="black",
+                  family ="Nanum Myeongjo")+
+  geom_shadowtext(data =. %>% filter(year ==2020), aes(label = pct), hjust = .7, vjust = -.8,  
+                  bg.color ="white", 
+                  color ="#4ea267", size = 5, face ="bold",
+                  family ="Nanum Myeongjo")
+
+
+setwd("C:/Users/User/OneDrive - 한국에너지기술연구원/안지석(개인폴더)/230125_energydata_샘플_가이드_png/resources/images/230904_Elec_independency/")
+ggsave("KESIS_elec_independency_facet.png",  width= 800, height = 1000, units ="px", dpi = 100)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 elec.independency.wider<-elec_independency_raw %>% 
   pivot_wider(names_from = year,
               values_from = pct,

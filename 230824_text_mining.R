@@ -17,25 +17,26 @@ library(tidytext)
 ## 사전 설치
 
 
-install.packages("remotes")
+#install.packages("remotes")
 
-remotes::install_github('haven-jeon/KoNLP', upgrade = "never",
-                        INSTALL_opts=c("--no-multiarch"), force =T)
+#remotes::install_github('haven-jeon/KoNLP', upgrade = "never",
+#                        INSTALL_opts=c("--no-multiarch"), force =T)
 
 
 # jdk 설치 확인
 
-install.packages("rJava")
-rJava::.jinit()
+#install.packages("rJava")
+#rJava::.jinit()
 library(rJava)
 
-install.packages("multilinguer")
-multilinguer::install_jdk()
+
+#install.packages("multilinguer")
+#multilinguer::install_jdk()
 
 
 # 자바관련
 
-Sys.setenv(JAVA_HOME="C:\\Program Files\\Java\\jre1.8.0_231")
+#Sys.setenv(JAVA_HOME="C:\\Program Files\\Java\\jre1.8.0_231")
 
 #
 library(KoNLP)
@@ -61,10 +62,6 @@ font_add_google(name =  'Nanum Gothic Coding',
 
 font_add_google("Noto Serif Korean")
 
-font_add_google(name =  'Noto Serif Korean',
-                family = 'Noto Serif Korean')
-
-
 
 font_add_google(name =  'Nanum Myeongjo',
                 family = 'Nanum Myeongjo')
@@ -73,9 +70,7 @@ font_add_google(name =  'Nanum Myeongjo',
 showtext_auto(TRUE)
 
 
-setwd("C:/R/Rproject/myfirstproject/230519_Energy_Issue")
-
-
+setwd("C:/R/Rproject/Energy&Data/20230838_Energy_Issues_Bigkinds")
 news.raw<- read_excel("NewsResult_20080225-20230510.xlsx")
 
 news.raw
