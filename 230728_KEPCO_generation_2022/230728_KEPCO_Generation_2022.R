@@ -65,6 +65,7 @@ KEPCO.Generation
 
 
 
+
 ## 지역별
 KEPCO.Generation %>% 
     group_by(region) %>% 
@@ -454,7 +455,7 @@ gen_6<-KEPCO.Generation %>%
     #theme_minimal()+
     theme(text = element_text(family = 'Nanum Myeongjo', size = 12),
           plot.title = element_text(size = 20, face="bold"),
-          plot.subtitle =element_text(size = 12),
+          plot.subtitle =element_text(size = 14),
           panel.grid.minor.x = element_blank(),
           legend.position = "none",
           panel.grid.major.y = element_blank(),
@@ -462,11 +463,14 @@ gen_6<-KEPCO.Generation %>%
           plot.caption = element_text(color = "azure4", face="bold"),
     )+
     labs(x= "", 
-         title = "대한민국 발전원별/행정구역별 발전량\nPower generation by source in Korea in 2022",
-         subtitle =paste0(KEPCO_year, "년 기준이며, 석탄/LNG/원자력을 제외한 나머지 발전원만 스케일을 20배 확대(0~5TWh)함."),
+         title = "석탄/원자력/LNG를 제외한 대한민국 발전원별/행정구역별 발전량\nPower generation by source in Korea in 2022",
+         subtitle =paste0(KEPCO_year, "년 기준이며, 주요 발전원을 제외한 나머지 발전원만 스케일을 20배 확대(0~5TWh)함."),
          caption = "Source : KEPCO, Graphic : Jiseok")
 
 gen_6
+### 이미지 경로
+setwd("C:/Users/User/OneDrive - 한국에너지기술연구원/안지석(개인폴더)/230125_energydata_샘플_가이드_png/resources/images/230728_KEPCO_Generation_2022")
+
 
 ggsave(file= "KEPCO_gen_6.png",  width =900, height = 700, units ="px", dpi = 100)
 

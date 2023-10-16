@@ -27,6 +27,7 @@ library(viridis)
 library(hrbrthemes)
 library(ggdist) 
 library(readxl)
+news.keyword
 library(tidytext)
 
 
@@ -72,9 +73,7 @@ showtext_auto(TRUE)
 
 
 
-
-setwd("C:/R/Rproject/2023_project_KIER/20230838_Energy_Issues_Bigkinds")
-
+setwd("C:/R/Rproject/Energy&Data/20230838_Energy_Issues_Bigkinds")
 
 news.raw<- read_excel("climate change.xlsx")
 
@@ -106,6 +105,8 @@ news.selected <- news.selected %>% filter(complete.cases(news.selected))
 
 
 
+unique(news.selected$source)
+
 head(news.selected)
 
 
@@ -125,6 +126,8 @@ news.selected %>%
 
 
 
+range(news.selected$date)
+
 
 
 
@@ -135,28 +138,37 @@ news.selected %>%
     count( n = n()) %>% 
     ggplot(aes(x = as.Date(ym), y = nn))+
     geom_col(fill ="#1f5c99")+
-    scale_x_date(date_breaks = "1 year", date_labels = "'%y. %b.")+ 
+    scale_x_date(date_breaks = "1 year", date_labels = "'%y")+ 
     geom_vline(xintercept = as.Date('2008-02-05'), color ="red", linetype ="dashed")+
     geom_vline(xintercept = as.Date('2013-02-25'), color ="red", linetype ="dashed")+
     geom_vline(xintercept = as.Date('2017-05-10'), color ="red", linetype ="dashed")+
     geom_vline(xintercept = as.Date('2022-05-10'), color ="red", linetype ="dashed")+
+    theme_minimal()+
+    theme_bw()+
     theme(
         text = element_text(family = 'Nanum Myeongjo'),
+        plot.title = element_text(size = 30, face ="bold"),
+        plot.subtitle = element_text(size =24),
         panel.grid.minor.x = element_blank(),
         #panel.grid.major.x = element_blank(),
         #    panel.grid.major.y = element_blank(),
         #axis.text.x = element_blank(),
-        axis.text.y = element_text(size = 15),
+        axis.text.y = element_text(size = 18),
+        axis.text.x = element_text(size = 18),
+        axis.title.x =element_text(size = 16),
+        axis.title.y =element_text(size = 16),
         axis.ticks.x = element_blank(),
-        strip.text.x = element_text(size = 11),
+        strip.text.x = element_text(size = 12),
         legend.position = "none")+
     labs(y = '사설 수',
-         x = '날짜')
+         x = '연도',
+         title = "분석기간 동안의 탄소중립 관련 사설의 수",
+         subtitle ="분석기간은 2008년 2월 29일부터 2023년 7월 10일이며, \n사설은 주요 언론사 및 지역 언론사를 포함한 46개 언론사의 검색 결과를 포함")
 
-setwd("C:/Users/User/OneDrive - 한국에너지기술연구원/안지석(개인폴더)/230125_energydata_샘플_가이드_png/resources/images/230607_Energy_Issue")
+setwd("C:/R/Rproject/Energy&Data/20230838_Energy_Issues_Bigkinds/img for poster")
+#setwd("C:/Users/User/OneDrive - 한국에너지기술연구원/안지석(개인폴더)/230125_energydata_샘플_가이드_png/resources/images/230607_Energy_Issue")
 
-
-ggsave('number_of_column_trend.png',   width =600, height = 400, units ="px", dpi = 100)
+ggsave('number_of_column_trend.png',   width =1200, height = 700, units ="px", dpi = 100)
 
 
 
@@ -170,22 +182,30 @@ news.selected %>%
     ggplot(aes(x = as.Date(ym), y = nn))+
     geom_col(fill ="#1f5c99")+
     scale_x_date(date_breaks = "1 year", date_labels = "'%y. %b.")+ facet_wrap(~president, ncol = 1)+
-    
-    theme(
-        text = element_text(family = 'Nanum Myeongjo'),
-        panel.grid.minor.x = element_blank(),
-        #panel.grid.major.x = element_blank(),
-        #    panel.grid.major.y = element_blank(),
-        #axis.text.x = element_blank(),
-        axis.text.y = element_text(size = 12),
-        axis.ticks.x = element_blank(),
-        strip.text.x = element_text(size = 11),
-        legend.position = "none")+
-    labs(y = '사설 수',
-         x = '날짜')+
-    geom_smooth(color ="yellow")
+  theme_minimal()+
+  theme_bw()+
+  theme(
+    text = element_text(family = 'Nanum Myeongjo'),
+    plot.title = element_text(size = 30, face ="bold"),
+    plot.subtitle = element_text(size =24),
+    panel.grid.minor.x = element_blank(),
+    #panel.grid.major.x = element_blank(),
+    #    panel.grid.major.y = element_blank(),
+    #axis.text.x = element_blank(),
+    axis.text.y = element_text(size = 18),
+    axis.text.x = element_text(size = 18),
+    axis.title.x =element_text(size = 16),
+    axis.title.y =element_text(size = 16),
+    axis.ticks.x = element_blank(),
+    strip.text.x = element_text(size = 12),
+    legend.position = "none")+
+  labs(y = '사설 수',
+       x = '연도',
+       title = "분석기간 동안의 탄소중립 관련 사설의 수",
+       subtitle ="분석기간은 2008년 2월 29일부터 2023년 7월 10일이며, \n사설은 주요 언론사 및 지역 언론사를 포함한 46개 언론사의 검색 결과를 포함")+
+    geom_smooth(color ="red")
 
-ggsave('number_of_column_trend_facet.png',   width =600, height = 400, units ="px", dpi = 100)
+ggsave('number_of_column_trend_facet.png',   width =1200, height = 1200, units ="px", dpi = 100)
 
 
 
@@ -215,10 +235,18 @@ news.keyword<- news.selected %>%
     rename(word = keyword) %>% 
     filter(str_length(word) > 1) %>% 
     count(president, word, sort = TRUE) %>%
-    filter(!word %in% c('만큼', '그동안', '각국'))
+    mutate(word = str_replace_all(word, '우리나라', '한국/우리나라'),
+         word = str_replace_all(word, '코로나19', '코로나'),
+         word = ifelse(word %in% c("택소", "노미"), "택소노미", word)) %>% 
+    filter(!word %in% c('문재인', '윤석열', '가능성', '이명박', '박근혜', '역대급', '만큼', '그동안', '각국'))
 
 
 news.keyword
+
+news.keyword %>% 
+  filter(word =="택소")
+
+
 
 ### 어짜피 키워드로 구분되어있으니까 unnest_tokens 안 써도 된다
 #news.keyword<- news.selected %>% 
@@ -506,14 +534,14 @@ for (i in keyword_top5) {
              x = '날짜')
     
     #setwd("C:/Users/User/OneDrive - 한국에너지기술연구원/안지석(개인폴더)/230125_energydata_샘플_가이드_png/resources/images/230607_Energy_Issue/keyword_by_president")
-    setwd("C:/R/Rproject/2023_project_KIER/20230838_Energy_Issues_Bigkinds")
-    
+
     ggsave(plot = keyword_top5_by_president, file =paste0("keyword_", i, ".png"),  width =1200, height = 700, units ="px", dpi = 100)
     
     
 }
 
 
+getwd()
 
 
 
@@ -545,21 +573,14 @@ news.keyword %>%
     labs(y = '단어 수',
          x = '단어')
 
-setwd("C:/Users/User/OneDrive - 한국에너지기술연구원/안지석(개인폴더)/230125_energydata_샘플_가이드_png/resources/images/230607_Energy_Issue")
 
 
 
-### 전처리리
-news.keyword_filtered<- news.keyword %>% 
-  mutate(word = str_replace_all(word, '우리나라', '한국/우리나라'),
-         word = str_replace_all(word, '코로나19', '코로나')) %>% 
-  filter(!word %in% c('문재인', '윤석열', '가능성', '이명박', '박근혜'))
 
-    
 
 
 ### 정권별로 구분해서?   - pct로 
-news.keyword_filtered %>% 
+news.keyword  %>% 
     group_by(president) %>% 
     mutate(total = sum(n)) %>% 
     ungroup() %>% 
@@ -570,25 +591,36 @@ news.keyword_filtered %>%
     ggplot(aes(x = reorder(word, pct, sum), y = pct, fill = president))+
     geom_col()+
     coord_flip()+
-    theme(
-        text = element_text(family = 'Nanum Myeongjo'),
-        panel.grid.minor.x = element_blank(),
-        #panel.grid.major.x = element_blank(),
-        #    panel.grid.major.y = element_blank(),
-        axis.text.x = element_text(angle = 45, hjust = 1),
-        axis.text.y = element_text(size = 12),
-        axis.ticks.x = element_blank(),
-        strip.text.x = element_text(size = 11),
-        #legend.position = "none"
+  scale_fill_brewer(palette = "Set2")+
+  theme_minimal()+
+  theme_bw()+
+  theme(
+    text = element_text(family = 'Nanum Myeongjo'),
+    plot.title = element_text(size = 30, face ="bold"),
+    plot.subtitle = element_text(size =24),
+    panel.grid.minor.x = element_blank(),
+    #panel.grid.major.x = element_blank(),
+    #    panel.grid.major.y = element_blank(),
+    #axis.text.x = element_blank(),
+    axis.text.y = element_text(size = 18),
+    axis.text.x = element_text(size = 18),
+    axis.title.x =element_text(size = 16),
+    axis.title.y =element_text(size = 16),
+    axis.ticks.x = element_blank(),
+    strip.text.x = element_text(size = 12),
+    plot.title.position = "plot",
+    #legend.position = "none"
     )+
     labs(
         x = '단어',
-        title ="전체 단어 중, 단어별 출연 빈도(%)를 정권별로 나타냄- 최고 출연 단어 20개")
+        y = '빈도(%)',
+        title ="단어별 출연 빈도(%)를 정권별로 나타내며, 상위 20개 단어만 제시")
+
+ggsave('keyword_keyword20.png',   width =1200, height = 700, units ="px", dpi = 100)
 
 
 
-
-news.keyword_filtered %>% 
+news.keyword  %>% 
     group_by(president) %>% 
     mutate(total = sum(n)) %>% 
     ungroup() %>% 
@@ -598,21 +630,131 @@ news.keyword_filtered %>%
     ggplot(aes(x = reorder(word, pct, sum), y = pct, fill = president))+
     geom_col()+
     coord_flip()+
-    theme(
-        text = element_text(family = 'Nanum Myeongjo'),
-        panel.grid.minor.x = element_blank(),
-        #panel.grid.major.x = element_blank(),
-        #    panel.grid.major.y = element_blank(),
-        axis.text.x = element_text(angle = 45, hjust = 1),
-        axis.text.y = element_text(size = 12),
-        axis.ticks.x = element_blank(),
-        strip.text.x = element_text(size = 11),
-        #legend.position = "none"
-    )+
-    labs(
-        x = '단어',
-        title ="전체 단어 중, 단어별 출연 빈도(%)를 정권별로 나타냄- 최고 출연 단어 20개"
-        )+facet_wrap(~president, nrow =1)
+  scale_fill_brewer(palette = "Set2")+
+  theme_minimal()+
+  theme_bw()+
+  theme(
+    text = element_text(family = 'Nanum Myeongjo'),
+    plot.title = element_text(size = 30, face ="bold"),
+    plot.subtitle = element_text(size =24),
+    panel.grid.minor.x = element_blank(),
+    #panel.grid.major.x = element_blank(),
+    #    panel.grid.major.y = element_blank(),
+    #axis.text.x = element_blank(),
+    axis.text.y = element_text(size = 18),
+    axis.text.x = element_text(size = 18),
+    axis.title.x =element_text(size = 16),
+    axis.title.y =element_text(size = 16),
+    axis.ticks.x = element_blank(),
+    strip.text.x = element_text(size = 12),
+    legend.position = "none")+
+  labs(
+    x = '',
+    y = '빈도(%)',
+    title ="단어별 출연 빈도(%)를 정권별로 나타내며 최고 출연 단어 20개만 제시")+
+  facet_wrap(~president, nrow =1)
+
+
+
+
+
+
+
+
+#####patchwork용
+
+keyword_20 <-news.keyword  %>% 
+  group_by(president) %>% 
+  mutate(total = sum(n)) %>% 
+  ungroup() %>% 
+  mutate(pct = n/total*100) %>% 
+  #top_n(20) %>% 
+  filter(pct >.48) %>%
+  #filter(pct >.3) %>% 
+  ggplot(aes(x = reorder(word, pct, sum), y = pct, fill = president))+
+  geom_col()+
+  coord_flip()+
+  scale_fill_brewer(palette = "Set2")+
+  theme_minimal()+
+  theme_bw()+
+  theme(
+    text = element_text(family = 'Nanum Myeongjo'),
+    plot.title = element_text(size = 30, face ="bold"),
+    plot.subtitle = element_text(size =24),
+    panel.grid.minor.x = element_blank(),
+    #panel.grid.major.x = element_blank(),
+    #    panel.grid.major.y = element_blank(),
+    #axis.text.x = element_blank(),
+    axis.text.y = element_text(size = 18),
+    axis.text.x = element_text(size = 18),
+    axis.title.x =element_text(size = 16),
+    axis.title.y =element_text(size = 16),
+    axis.ticks.x = element_blank(),
+    strip.text.x = element_text(size = 12),
+    plot.title.position = "plot",
+    legend.position = c(0.8, 0.7)
+  )+
+  labs(
+    x = '단어',
+    y = '빈도(%)')
+
+
+keyword_20_facet<- news.keyword  %>% 
+  group_by(president) %>% 
+  mutate(total = sum(n)) %>% 
+  ungroup() %>% 
+  mutate(pct = n/total*100) %>% 
+  #top_n(20) %>% 
+  filter(pct >.48) %>% 
+  ggplot(aes(x = reorder(word, pct, sum), y = pct, fill = president))+
+  geom_col()+
+  coord_flip()+
+  scale_fill_brewer(palette = "Set2")+
+  theme_minimal()+
+  theme_bw()+
+  theme(
+    text = element_text(family = 'Nanum Myeongjo'),
+    plot.title = element_text(size = 30, face ="bold"),
+    plot.subtitle = element_text(size =24),
+    panel.grid.minor.x = element_blank(),
+    #panel.grid.major.x = element_blank(),
+    #    panel.grid.major.y = element_blank(),
+    #axis.text.x = element_blank(),
+    axis.text.y = element_text(size = 18),
+    axis.text.x = element_text(size = 18),
+    axis.title.x =element_text(size = 16),
+    axis.title.y =element_text(size = 16),
+    axis.ticks.x = element_blank(),
+    strip.text.x = element_text(size = 12),
+    legend.position = "none")+
+  labs(
+    x = '',
+    y = '빈도(%)')+
+  facet_wrap(~president, nrow =1)
+
+
+
+
+keyword_20+keyword_20_facet+
+  plot_annotation(
+    title = '단어별 출연 빈도(%)를 정권별로 나타냄 - 상위 단어 20개만 제시',
+    subtitle = '왼쪽 그래프는 누적 비중을 확인할 수 있으며, 오른쪽 그래프는 정권별 특징을 보여줌',
+    caption = 'Disclaimer: None of these plots are insightful') &
+  theme( text = element_text(family = 'Nanum Myeongjo'),
+         plot.title = element_text(size = 30, face ="bold"),
+         plot.subtitle = element_text(size =24))
+
+ggsave('keyword_keyword20_patchword.png',   width =1200, height = 700, units ="px", dpi = 100)
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -626,7 +768,8 @@ news.keyword.is.na<- news.keyword %>%
     ungroup() %>% 
     mutate(pct = n/total*100) %>% 
     select(president, word, pct) %>% 
-    pivot_wider(names_from= president, values_from = pct) %>% 
+    mutate(row_id = row_number(), .by=c('president', 'word')) %>%  ### https://stackoverflow.com/questions/76366516/is-there-an-r-function-in-pivot-wider-to-spread-out-list-columns-data-from-a-piv
+    pivot_wider(names_from= 'president', values_from = 'pct') %>%  ## pivot wider list-column 문제 해결
     mutate(pct = rowSums(.[2:5], na.rm=T),
            is_na = rowSums(is.na(.[2:5]))) %>% 
     arrange(-pct)
@@ -635,6 +778,7 @@ news.keyword.is.na<- news.keyword %>%
 
 
 news.keyword.is.na 
+
 
 news.keyword.is.na %>% 
     select(-pct) %>% 
@@ -689,8 +833,7 @@ for (i in keyword_is_na_2) {
              y = '사설 수',
              x = '날짜')
     
-    #setwd("C:/Users/User/OneDrive - 한국에너지기술연구원/안지석(개인폴더)/230125_energydata_샘플_가이드_png/resources/images/230607_Energy_Issue/keyword_by_president")
-    setwd("C:/R/Rproject/2023_project_KIER/20230838_Energy_Issues_Bigkinds")
+
     
     ggsave(plot = keyword_is_na_2_graph, file =paste0("keyword_is_na_2_graph_", i, ".png"),  width =1200, height = 700, units ="px", dpi = 100)
     
@@ -772,17 +915,24 @@ news.keyword %>%
     ggplot(aes(x = reorder(word, pct, sum), y = pct, fill = president))+
     geom_col()+
     coord_flip()+
-    theme(
-        text = element_text(family = 'Nanum Myeongjo'),
-        panel.grid.minor.x = element_blank(),
-        #panel.grid.major.x = element_blank(),
-        #    panel.grid.major.y = element_blank(),
-        axis.text.x = element_text(angle = 45, hjust = 1),
-        axis.text.y = element_text(size = 12),
-        axis.ticks.x = element_blank(),
-        strip.text.x = element_text(size = 11),
-        #legend.position = "none"
-    )+
+  scale_fill_brewer(palette = "Set2")+
+  theme_minimal()+
+  theme_bw()+
+  theme(
+    text = element_text(family = 'Nanum Myeongjo'),
+    plot.title = element_text(size = 30, face ="bold"),
+    plot.subtitle = element_text(size =24),
+    panel.grid.minor.x = element_blank(),
+    #panel.grid.major.x = element_blank(),
+    #    panel.grid.major.y = element_blank(),
+    #axis.text.x = element_blank(),
+    axis.text.y = element_text(size = 18),
+    axis.text.x = element_text(size = 18),
+    axis.title.x =element_text(size = 16),
+    axis.title.y =element_text(size = 16),
+    axis.ticks.x = element_blank(),
+    strip.text.x = element_text(size = 12),
+    legend.position = "none")+
     labs(
         x = '단어')+
     facet_wrap(~president, scales= "free_y", nrow = 1)
@@ -790,6 +940,9 @@ news.keyword %>%
 
 ## 모든 정권에서 나타난 단어는 제외하고
 
+
+
+####
 news.keyword.is.na %>% 
     arrange(desc(pct)) %>% 
     filter(is_na>1) %>%  ################################ 여기
@@ -798,23 +951,31 @@ news.keyword.is.na %>%
     rename(value = pct) %>% 
     pivot_longer(-c(word, value, row_number), names_to = "president", values_to = 'pct') %>% 
     filter(row_number<= 50) %>% 
+    mutate(president = factor(president, levels = c('이명박', '박근혜', '문재인', '윤석열'))) %>% 
     ggplot(aes(x = reorder(word, pct, sum), y = pct, fill = president))+
     geom_col()+
     coord_flip()+
-    theme(
-        text = element_text(family = 'Nanum Myeongjo'),
-        panel.grid.minor.x = element_blank(),
-        #panel.grid.major.x = element_blank(),
-        #    panel.grid.major.y = element_blank(),
-        axis.text.x = element_text(angle = 45, hjust = 1),
-        axis.text.y = element_text(size = 10),
-        axis.ticks.x = element_blank(),
-        strip.text.x = element_text(size = 11),
-        #legend.position = "none"
-    )+
+  scale_fill_brewer(palette = "Set2")+
+  theme_minimal()+
+  theme_bw()+
+  theme(
+    text = element_text(family = 'Nanum Myeongjo'),
+    plot.title = element_text(size = 30, face ="bold"),
+    plot.subtitle = element_text(size =24),
+    panel.grid.minor.x = element_blank(),
+    #panel.grid.major.x = element_blank(),
+    #    panel.grid.major.y = element_blank(),
+    #axis.text.x = element_blank(),
+    axis.text.y = element_text(size = 14),
+    axis.text.x = element_text(size = 18),
+    axis.title.x =element_text(size = 16),
+    axis.title.y =element_text(size = 16),
+    axis.ticks.x = element_blank(),
+    strip.text.x = element_text(size = 12),
+    legend.position = "none")+
     labs(
         x = '단어')+
-    facet_wrap(~fct_relevel(president, levels = c('이명박', '박근혜', '문재인', '윤석열')), scales= "free_y", nrow = 1)
+    facet_wrap(~president, scales= "free", nrow = 1)
 
 
 
@@ -885,13 +1046,6 @@ setwd("C:/Users/User/OneDrive - 한국에너지기술연구원/안지석(개인�
 news.keyword
 
 
-
-news.keyword<- news.selected %>% 
-    separate_rows(keyword, sep= ",") %>% 
-    rename(word = keyword) %>% 
-    filter(str_length(word) > 1) %>% 
-    count(president, word, sort = TRUE) %>%
-    filter(!word %in% c('만큼', '그동안', '각국')) ## 전처리
 
 
 
@@ -1094,17 +1248,44 @@ library(ggraph)
 ## 상관계수 phi-coefficient 
 
 
-president_name <-c("문재인")
+
+
+
+
+
+
+
+## 20231010 미팅
+## 특정 단어 분석
+
+
+## 20231010 미팅
+## 20231010 미팅
+## 20231010 미팅
+## 20231010 미팅
+## 20231010 미팅
+## 20231010 미팅
+## 20231010 미팅
+
+
+
+
+
+
+
 
 president_name <-c("윤석열")
+president_name <-c("이명박")
+president_name <-c("박근혜")
+president_name <-c("문재인")
 
-keyword_name <-c("탄소중립")
+filter_number = 20
+corr = 0.15
 
-## 특정 단어 분석
 news.selected%>% 
    filter(president == president_name) %>% 
     select(keyword, president) %>%
-    filter(str_detect(keyword, keyword_name)) %>% 
+  #  filter(str_detect(keyword, keyword_name)) %>% 
     rowid_to_column() %>% 
     unnest_tokens(input = keyword,
                   output = word,
@@ -1122,13 +1303,13 @@ news.selected%>%
            word =str_replace_all(word, '부산시', '부산'),
            ) %>% 
     add_count(word) %>% 
-   filter(n >=10) %>%   ## 절대적 기준 없으나 꼭 필요
+   filter(n >= filter_number) %>%   ## 절대적 기준 없으나 꼭 필요
     ## pairwise_count가 아니고 pairwise_cor 임
     pairwise_cor(item = word,      
                  feature = rowid,
                  sort = T) %>% 
     #filter(item1 %in% c("태양광")) %>% 
-    filter(correlation >= 0.2) %>% ## 이거 꼭 넣어야함 안 그럼 개판(절대적 기준 없음) 
+    filter(correlation >= corr) %>% ## 이거 꼭 넣어야함 안 그럼 개판(절대적 기준 없음) 
     as_tbl_graph(directed = F) %>% 
     mutate(centrality = centrality_degree(),        # 연결 중심성 or centrality_edge_betweenness()  참고: https://tidygraph.data-imaginist.com/
            group = as.factor(
@@ -1150,21 +1331,23 @@ news.selected%>%
     scale_size(range = c(2, 10)) +
     geom_node_text(aes(label = name),
                    repel = T,
-                   size = 4,
-                   family = "nanumgothic") +
+                   size = 5,
+                   family = "Nanum Myeongjo") +
     
     theme_graph()+                          # 배경 삭제
-    labs(title = paste0("전체 기간 키워드:", keyword_name,  "(단어 간 상관관계(phi-coefficient) 네트워크)"))
+    labs(title = paste0(president_name, " 정권",  "- 단어 간 상관관계(phi-coefficient) 네트워크"))
 
 
 
-ggsave(plot =phi_coefficient_1, "phi_coefficient_1.png",  width =1200, height = 700, units ="px", dpi = 100)
+ggsave(file =paste0(president_name, "_phi_", corr, "_filter_",filter_number, ".png"),  width =1200, height = 700, units ="px", dpi = 100)
 
 
 
 
 correlation_coef <- c(0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4)
 correlation_coef
+
+## 미팅 회의 최지영 
 
 for (i in correlation_coef) {
     
@@ -1176,7 +1359,7 @@ for (i in correlation_coef) {
                       to_lower = FALSE) %>% 
         filter(str_length(word) > 1) %>%
         add_count(word) %>% 
-        filter(n >=200) %>%   ## 절대적 기준 없음
+        filter(n >=50) %>%   ## 절대적 기준 없음
         ## pairwise_count가 아니고 pairwise_cor 임
         pairwise_cor(item = word,      
                      feature = rowid,
@@ -1204,7 +1387,7 @@ for (i in correlation_coef) {
         geom_node_text(aes(label = name),
                        repel = T,
                        size = 4,
-                       family = "nanumgothic") +
+                       family = "Nanum Myeongjo") +
         
         theme_graph()+                          # 배경 삭제
         labs(title = paste("1990-2023 신문 사설을 활용한 단어 간 상관관계(phi-coefficient) 네트워크", "(correlation coeff=", i, ")"))
@@ -1229,17 +1412,15 @@ for (i in correlation_coef) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+########### 여기부터는 활용 안할 것
+########### 여기부터는 활용 안할 것
+########### 여기부터는 활용 안할 것
+########### 여기부터는 활용 안할 것
+########### 여기부터는 활용 안할 것
+########### 여기부터는 활용 안할 것
+########### 여기부터는 활용 안할 것
+########### 여기부터는 활용 안할 것
+########### 여기부터는 활용 안할 것
 
 
 

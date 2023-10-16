@@ -7,10 +7,10 @@ library(extrafont)
 library(ggtext)
 library(gghighlight)
 
-showtext_auto()
 font_add_google('Nanum Myeongjo', 'Nanum Myeongjo')
 font_add_google("Nanum Gothic", "nanumgothic")
 font_add_google("Poor Story", "poorstory")
+
 
 
 
@@ -58,6 +58,7 @@ price_tidy_img <- price_tidy %>%
   theme_minimal()+
   theme(plot.title = element_text(size = 24, family="nanumgothic"),
         plot.subtitle =element_markdown(size = 20),
+        plot.background = element_rect(fill ="white"),
         plot.background =element_rect(fill="white"),
         panel.grid.minor = element_blank(),
         panel.grid.major.x =element_blank())+
@@ -118,6 +119,7 @@ price_tidy %>%
   theme_minimal()+
   theme(plot.title = element_text(size = 24, family="nanumgothic"),
         plot.background =element_rect(fill="white"),
+        plot.background = element_rect(fill ="white"),
         panel.grid.minor = element_blank(),
         panel.grid.major.x =element_blank())+
   labs(title ="물가지수에서 경유와 도시가스만 표기",
@@ -135,16 +137,23 @@ price_tidy %>%
   theme_bw()+
   theme_minimal()+
   facet_wrap(~type)+
-  theme(plot.title = element_text(size = 24, family="nanumgothic"),
+  theme(text = element_text(family = 'Nanum Myeongjo'),
+        plot.title = element_text(size = 24),
         plot.background =element_rect(fill="white"),
         panel.grid.minor = element_blank(),
-        panel.grid.major.x =element_blank())+
+        panel.grid.major.x =element_blank(),
+        axis.text.y = element_text(size = 12),
+        axis.text.x = element_text(size = 10),
+        axis.title.x =element_text(size = 14),
+        axis.title.y =element_text(size = 14),
+        axis.ticks.x = element_blank(),
+        strip.text.x = element_text(size = 12))+
   labs(title ="물가지수",
        subtitle ="물가지수에서 에너지가 차지하는 정도를 보기 위해 만들었다",
        caption = "Source: 통계청, Graphic: Jiseok")
 
 
-
+ggsave("물가지수_facet.png",  width= 630, height = 700, units ="px", dpi = 100)
 
 
 
@@ -197,6 +206,7 @@ unique(price_fig1$type)
 
 
 
+
 price_fig1 %>% 
   ggplot(aes(x = date, y = index, group = type, color = type))+
   geom_line(color = "gray80")+
@@ -211,6 +221,7 @@ price_fig1 %>%
                             size = 14),
         plot.title = element_markdown(size= 22, face="bold"),
         plot.subtitle = element_markdown(size= 16,lineheight = 1.2),
+        plot.background = element_rect(fill ="white"),
         axis.text.x = element_text(size = 10),
         axis.text.y = element_text(size = 12),
         axis.title.x =element_text(size = 14),
@@ -221,12 +232,17 @@ price_fig1 %>%
         plot.title.position = "plot",
         legend.position = "none"
   )+
-  labs(title = "대한민국 17개 광역지자체별 전력자립도 변화<br> Changes in electricity dependency in South Korea by regions",
-       subtitle ="전력자립도는 전략 발전량을 소비량으로 나눈 백분율로, <br> <span style='color:#142f38'>**2011년**</span>부터 <span style ='color:#4ea267'>2020년</span>까지 대한민국 광역지자체별 전력자립도의 변화를 나타내었음",
+  labs(title = "dddddddd",
+       subtitle =" <span style='color:#ec111a'>**총지수**</span> <span style='color:#1f5c88'>**전기/가스/수도**</span> <span style ='color:gold'>석유류</span>",
        x = "",
        y = "물가지수",
-       caption = "Source : KESIS(국가에너지통계 정보시스템),\nGraphic : Jiseok")
+       caption = "Source : 통계청, Graphic : Jiseok")
 
+setwd("C:/R/Rproject/Energy&Data/230922_energy_price/img")
+ggsave("energy_price_fig1.png",  width= 800, height = 800, units ="px", dpi = 100)
+
+
+setwd("C:/R/Rproject/Energy&Data/230922_energy_price/img")
 
 
 str(price_fig1)
@@ -263,6 +279,7 @@ price_fig1 %>%
                             size = 14),
         plot.title = element_markdown(size= 22, face="bold"),
         plot.subtitle = element_markdown(size= 16,lineheight = 1.2),
+        plot.background = element_rect(fill ="white"),
         axis.text.x = element_text(size = 10),
         axis.text.y = element_text(size = 12),
         axis.title.x =element_text(size = 14),
@@ -279,8 +296,7 @@ price_fig1 %>%
        y = "물가지수",
        caption = "Source : KESIS(국가에너지통계 정보시스템),\nGraphic : Jiseok")
 
-
-setwd("C:/Users/User/OneDrive - 한국에너지기술연구원/안지석(개인폴더)/230125_energydata_샘플_가이드_png/resources/images/230922_energy_price/")
+setwd("C:/R/Rproject/Energy&Data/230922_energy_price/img")
 ggsave("energy_price_fig1.png",  width= 800, height = 800, units ="px", dpi = 100)
 
 
@@ -320,6 +336,7 @@ price_fig1 %>%
                             size = 14),
         plot.title = element_markdown(size= 22, face="bold"),
         plot.subtitle = element_markdown(size= 16,lineheight = 1.2),
+        plot.background = element_rect(fill ="white"),
         axis.text.x = element_text(size = 10),
         axis.text.y = element_text(size = 12),
         axis.title.x =element_text(size = 14),
@@ -338,8 +355,8 @@ price_fig1 %>%
 
 
 
+setwd("C:/R/Rproject/Energy&Data/230922_energy_price/img")
 
-setwd("C:/Users/User/OneDrive - 한국에너지기술연구원/안지석(개인폴더)/230125_energydata_샘플_가이드_png/resources/images/230922_energy_price/")
 ggsave("energy_price_fig1_ver2.png",  width=1000, height =800, units ="px", dpi = 100)
 
 
@@ -374,6 +391,7 @@ price_fig2 %>%
                             size = 14),
         plot.title = element_markdown(size= 22, face="bold"),
         plot.subtitle = element_markdown(size= 16,lineheight = 1.2),
+        plot.background = element_rect(fill ="white"),
         axis.text.x = element_text(size = 10),
         axis.text.y = element_text(size = 12),
         axis.title.x =element_text(size = 14),
@@ -390,6 +408,8 @@ price_fig2 %>%
        y = "물가지수",
        caption = "Source : KESIS(국가에너지통계 정보시스템),\nGraphic : Jiseok")
 
+setwd("C:/R/Rproject/Energy&Data/230922_energy_price/img")
+ggsave("energy_price_fig1_ver3.png",  width= 800, height = 800, units ="px", dpi = 100)
 
 
 
@@ -430,6 +450,7 @@ price_fig2 %>%
                             size = 14),
         plot.title = element_markdown(size= 22, face="bold"),
         plot.subtitle = element_markdown(size= 16,lineheight = 1.2),
+        plot.background = element_rect(fill ="white"),
         axis.text.x = element_text(size = 10),
         axis.text.y = element_text(size = 12),
         axis.title.x =element_text(size = 14),
@@ -447,6 +468,10 @@ price_fig2 %>%
        caption = "Source : KESIS(국가에너지통계 정보시스템),\nGraphic : Jiseok")
 
 
+setwd("C:/R/Rproject/Energy&Data/230922_energy_price/img")
+ggsave("energy_price_fig1_ver4.png",  width= 800, height = 800, units ="px", dpi = 100)
+
+
 
 xl    = c( 4,  1)
 yl    = c( 1,  4)
@@ -458,8 +483,6 @@ line2 = data.frame(x=xl,y=yl,type)
 
 line2
 
-setwd("C:/Users/User/OneDrive - 한국에너지기술연구원/안지석(개인폴더)/230125_energydata_샘플_가이드_png/resources/images/230922_energy_price/")
-ggsave("energy_price_fig2.png",  width= 600, height = 800, units ="px", dpi = 100)
 
 
 
@@ -545,6 +568,7 @@ price_fig3 %>%
                             size = 14),
         plot.title = element_markdown(size= 22, face="bold"),
         plot.subtitle = element_markdown(size= 16,lineheight = 1.2),
+        plot.background = element_rect(fill ="white"),
         axis.text.x = element_text(size = 10),
         axis.text.y = element_text(size = 12),
         axis.title.x =element_text(size = 14),
@@ -561,9 +585,7 @@ price_fig3 %>%
        y = "물가지수",
        caption = "Source : KESIS(국가에너지통계 정보시스템),\nGraphic : Jiseok")
 
-
-
-setwd("C:/Users/User/OneDrive - 한국에너지기술연구원/안지석(개인폴더)/230125_energydata_샘플_가이드_png/resources/images/230922_energy_price/")
+setwd("C:/R/Rproject/Energy&Data/230922_energy_price/img")
 ggsave("energy_price_fig3.png",  width= 600, height = 600, units ="px", dpi = 100)
 
 
@@ -601,6 +623,7 @@ price_fig4 %>%
   theme(text = element_text(family = 'Nanum Myeongjo',
                             size = 14),
         plot.title = element_markdown(size= 22, face="bold"),
+        plot.background = element_rect(fill ="white"),
         plot.subtitle = element_markdown(size= 16,lineheight = 1.2),
         axis.text.x = element_text(size = 10),
         axis.text.y = element_text(size = 12),
@@ -619,8 +642,6 @@ price_fig4 %>%
        caption = "Source : KESIS(국가에너지통계 정보시스템),\nGraphic : Jiseok")
 
 
-
-
-setwd("C:/Users/User/OneDrive - 한국에너지기술연구원/안지석(개인폴더)/230125_energydata_샘플_가이드_png/resources/images/230922_energy_price/")
+setwd("C:/R/Rproject/Energy&Data/230922_energy_price/img")
 ggsave("energy_price_fig4.png",  width= 600, height = 600, units ="px", dpi = 100)
 
