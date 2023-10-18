@@ -64,21 +64,20 @@ KIER 기술정책플랫폼 업무 참여자 : 안지석, 최지영 이화랑
     -   [Markdown](https://gist.github.com/ihoneymon/652be052a0727ad59601)
 -   데이터분석/시각화는 언제든 협조
 
-
 ## R, Data science 등 참고 사이트
 
-- [R 텍스트 마이닝](https://r2bit.com/book_tm/)
-- [Quarto 데이터 사이언스](https://r2bit.com/quarto/writing/)
-- [R로 배우는 기초 통계](https://greendaygh.github.io/Rstat2019/)
-- [디지털미디어와 빅데이터: 5주차 강의](https://rstudio-pubs-static.s3.amazonaws.com/749877_f992c9daeddd4f75b742899a08c3f01d.html)
-- [빅데이터 분석 및 실습](http://bigdata.dongguk.ac.kr/lectures/bigdata/_book/)
-- [Data Visualization with R](https://rkabacoff.github.io/datavis/)
-- [R for Data Science](https://r4ds.had.co.nz/index.html)
-- [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-book.org/)
-- [Text Mining for Social Scientists](https://bookdown.org/f_lennert/text-mining-book/)
-- [Network 분석 - community detection](https://lsjsj92.tistory.com/587)
-- [데이터과학 기초-(14)네트워크의 유사도와 군집도](https://velog.io/@00springbom00/데이터과학-기초-14네트워크의-유사도와-군집도)
-- [온라인 커뮤니티 상의 게시글에 대해 louvain method 클러스터링 기법을 적용한 내부 커뮤니티 성향 탐지 기법](https://www.slideshare.net/SunyoungKim14/louvain-method)
+-   [R 텍스트 마이닝](https://r2bit.com/book_tm/)
+-   [Quarto 데이터 사이언스](https://r2bit.com/quarto/writing/)
+-   [R로 배우는 기초 통계](https://greendaygh.github.io/Rstat2019/)
+-   [디지털미디어와 빅데이터: 5주차 강의](https://rstudio-pubs-static.s3.amazonaws.com/749877_f992c9daeddd4f75b742899a08c3f01d.html)
+-   [빅데이터 분석 및 실습](http://bigdata.dongguk.ac.kr/lectures/bigdata/_book/)
+-   [Data Visualization with R](https://rkabacoff.github.io/datavis/)
+-   [R for Data Science](https://r4ds.had.co.nz/index.html)
+-   [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-book.org/)
+-   [Text Mining for Social Scientists](https://bookdown.org/f_lennert/text-mining-book/)
+-   [Network 분석 - community detection](https://lsjsj92.tistory.com/587)
+-   [데이터과학 기초-(14)네트워크의 유사도와 군집도](https://velog.io/@00springbom00/데이터과학-기초-14네트워크의-유사도와-군집도)
+-   [온라인 커뮤니티 상의 게시글에 대해 louvain method 클러스터링 기법을 적용한 내부 커뮤니티 성향 탐지 기법](https://www.slideshare.net/SunyoungKim14/louvain-method)
 
 ## 요청 사항(8-22까지)
 
@@ -93,3 +92,34 @@ KIER 기술정책플랫폼 업무 참여자 : 안지석, 최지영 이화랑
 방법:트리맵, 인터랙티브\
 자료 출처: KISTEP
 :::
+
+# 2023.10.18. '23년 신규 콘텐츠 기획(with 플랜아이)
+
+-   Energy&Data는 별도로 본 과업은 진행하며, 디자인 + 웹기술의 힘을 받을 수 있다는 장점.
+
+```{=html}
+<!-- -->
+```
+-   (과업 범위) 웹콘텐츠 3개 + 메인메뉴 개편
+
+    -   인당 하나씩 주제 정하고 데이터 확보 및 기획
+
+    -   각자 선택한 주제를 함께 논의하면서 진행시키면 좋을 듯
+
+-   참고 사이트
+
+    -   CH4를 다룬 인터랙티브 [The other greenhouse gas](https://www.reuters.com/graphics/FOOD-WASTE/METHANE/gdpzwqwqovw/) by reuter
+
+    -   [Interactive: How climate finance \'flows\' around the world](https://www.carbonbrief.org/interactive-how-climate-finance-flows-around-the-world/) by carbon brief
+
+    -   [The impacts of climate change at 1.5C, 2C and beyond](https://www.carbonbrief.org/interactive-how-climate-finance-flows-around-the-world/) by carbon brief
+
+    -   여성 노동의 참여를 다룬 인터랙티브 [Female labor force participation](https://genderdata.worldbank.org/data-stories/flfp-data-story/) by world bank
+
+    -   차트 예제 [Dataviz inspiration](https://www.dataviz-inspiration.com/)
+
+-   데이터 조사
+
+    -   2023주요사업 -\> 61.기술정책플랫폼 -\> 20231018\_ '23년 신규 콘텐츠 with 플랜아이 \_기획
+
+    -   주제별 폴더 만들어서 확보 가능한 데이터 넣어주시면 감사

@@ -256,9 +256,10 @@ gen_2<-KEPCO.Generation %>%
                #fill = fct_relevel(source, source_level_gen),
                fill = source))+
     scale_fill_manual(values = source_palette)+    geom_bar(stat="identity")+
-    geom_text(aes(label = comma(round(MWh,0))), family = 'Nanum Myeongjo' , hjust =-.3, size = 3.5)+
+    geom_text(aes(label = comma(round(MWh,0))), family = 'Nanum Myeongjo' , hjust =-.1, size = 3.5)+
     coord_flip()+
-    scale_y_continuous(limits =c(0, 175000), breaks = seq(0, 1750000, 25000))+
+    scale_y_continuous(labels =comma, limits =c(0, 120000), breaks = seq(0, 120000, 40000))+
+  
     facet_wrap(~fct_relevel(region, region_level_gen), ncol = 6, scales ="free_y")+
     theme_bw()+
     theme(text = element_text(size = 14, family = 'Nanum Myeongjo'),
@@ -266,10 +267,11 @@ gen_2<-KEPCO.Generation %>%
           plot.subtitle =element_text(size = 12),
           panel.grid.minor.x = element_blank(),
           panel.grid.major.y = element_blank(),
-          panel.grid.major.x = element_blank(),
-          axis.text.x = element_blank(),
+         # panel.grid.major.x = element_blank(),
+          #axis.text.x = element_blank(),
           #  axis.text.x = element_text(size = 10, angle = 45, vjust = .5),
           legend.position = "none",
+         axis.text = element_text(size = 10),
           plot.caption = element_text(color = "azure4", face="bold"),
           
     )+
@@ -426,7 +428,7 @@ gen_5<-KEPCO.Generation %>%
     )+
     labs(x= "", 
          title = paste("대한민국 발전원별/행정구역별 발전량\nPower generation by source in Korea in", KEPCO_year),
-         subtitle =paste0(KEPCO_year, "년 기준이며, 모든 발전원을 동일한 스케일(0~100TWh)로 제시함."),
+         subtitle =paste0(KEPCO_year, "년 기준이며, 발전원별 개별 그래프로 나타냄"),
          caption = "Source : KEPCO, Graphic : Jiseok")
 
 
@@ -464,7 +466,7 @@ gen_6<-KEPCO.Generation %>%
     )+
     labs(x= "", 
          title = "석탄/원자력/LNG를 제외한 대한민국 발전원별/행정구역별 발전량\nPower generation by source in Korea in 2022",
-         subtitle =paste0(KEPCO_year, "년 기준이며, 주요 발전원을 제외한 나머지 발전원만 스케일을 20배 확대(0~5TWh)함."),
+         subtitle =paste0(KEPCO_year, "년 기준이며, 주요 발전원을 제외한 나머지 발전원을 개별 그래프로 나타냄."),
          caption = "Source : KEPCO, Graphic : Jiseok")
 
 gen_6
