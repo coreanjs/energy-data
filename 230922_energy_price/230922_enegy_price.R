@@ -6,11 +6,13 @@ library(showtext)
 library(extrafont)
 library(ggtext)
 library(gghighlight)
+library(scales)
 
 font_add_google('Nanum Myeongjo', 'Nanum Myeongjo')
 font_add_google("Nanum Gothic", "nanumgothic")
 font_add_google("Poor Story", "poorstory")
 
+showtext_auto()
 
 
 
@@ -193,7 +195,7 @@ price_fig1 <- read_excel("230922_소비자물가지수.xlsx", sheet ="대분류�
   na.omit() %>% 
   pivot_longer(-type, names_to = "date", values_to ="index") %>% 
   mutate(type = as.factor(type),
-         date = ym(date),
+         date =as.Date(as.yearmon(ym(date))),
          type_label = if_else(date =="2023-08-01", type , NA_character_))
 
 
@@ -239,6 +241,9 @@ price_fig1 %>%
        caption = "Source : 통계청, Graphic : Jiseok")
 
 setwd("C:/R/Rproject/Energy&Data/230922_energy_price/img")
+
+
+
 ggsave("energy_price_fig1.png",  width= 800, height = 800, units ="px", dpi = 100)
 
 
@@ -250,6 +255,11 @@ str(price_fig1)
 
 
 ### ver for 이화랑
+### ver for 이화랑
+### ver for 이화랑
+### ver for 이화랑
+### ver for 이화랑
+
 
 library(ggrepel)
 price_fig1 %>% 
@@ -279,13 +289,13 @@ price_fig1 %>%
                             size = 14),
         plot.title = element_markdown(size= 22, face="bold"),
         plot.subtitle = element_markdown(size= 16,lineheight = 1.2),
-        plot.background = element_rect(fill ="white"),
+     #   plot.background = element_rect(fill ="NA"),
         axis.text.x = element_text(size = 10),
         axis.text.y = element_text(size = 12),
         axis.title.x =element_text(size = 14),
         panel.grid.minor.x = element_blank(),
         #panel.grid.major.y = element_blank(),
-        panel.grid.major.x = element_blank(),
+        #panel.grid.major.x = element_blank(),
         panel.grid.minor.y = element_blank(),
         plot.title.position = "plot",
         legend.position = "none"
@@ -294,10 +304,12 @@ price_fig1 %>%
        subtitle ="물가지수",
        x = "",
        y = "물가지수",
-       caption = "Source : KESIS(국가에너지통계 정보시스템),\nGraphic : Jiseok")
+       caption = "Source : KOSIS 국가통계포털 국가통계포털,\nGraphic : Jiseok")
 
-setwd("C:/R/Rproject/Energy&Data/230922_energy_price/img")
-ggsave("energy_price_fig1.png",  width= 800, height = 800, units ="px", dpi = 100)
+#setwd("C:/R/Rproject/Energy&Data/230922_energy_price/img")
+setwd("V:/2023 정책연구실 주요사업/61. KIER 기술정책플랫폼/[Energy&Data]/resources/images/231011_CPI")
+
+ggsave("energy_price_fig1.png",  width= 600, height = 500, units ="px", dpi = 100)
 
 
 
@@ -323,11 +335,9 @@ price_fig1 %>%
   geom_line(linewidth = 1)+
   scale_y_continuous(limits = c(35, 165), breaks = c(40, 100, 160))+
   gghighlight(use_direct_label = FALSE)+
-  scale_x_date(limits = as.Date(c('2017-12-01', 
-                                  '2023-08-01'), format ="%Y"))+
-  geom_vline(xintercept = as.Date(c('2020-01-01', '2022-01-02')), linetype="dotted")+
-
-  facet_wrap(~fct_relevel(type, type_level), nrow =4)+
+  scale_x_date(labels = date_format("'%y"), date_breaks = "1 year")+
+  
+  facet_wrap(~fct_relevel(type, type_level), nrow =2, scales="free_x")+
   geom_line(data =. %>% filter(type %in% c("총지수")), aes(x = date, y = index), color ="#1f5c99", size = 1.5)+
   geom_line(data =. %>% filter(type %in% c("석유류")), aes(x = date, y = index), color ="brown", size = 1.5)+
   theme_bw()+
@@ -336,13 +346,13 @@ price_fig1 %>%
                             size = 14),
         plot.title = element_markdown(size= 22, face="bold"),
         plot.subtitle = element_markdown(size= 16,lineheight = 1.2),
-        plot.background = element_rect(fill ="white"),
+        #plot.background = element_rect(fill ="NA"),
         axis.text.x = element_text(size = 10),
         axis.text.y = element_text(size = 12),
         axis.title.x =element_text(size = 14),
         panel.grid.minor.x = element_blank(),
         #panel.grid.major.y = element_blank(),
-        panel.grid.major.x = element_blank(),
+        #panel.grid.major.x = element_blank(),
         panel.grid.minor.y = element_blank(),
         plot.title.position = "plot",
         legend.position = "none"
@@ -351,13 +361,13 @@ price_fig1 %>%
        subtitle ="물가지수",
        x = "",
        y = "물가지수",
-       caption = "Source : KESIS(국가에너지통계 정보시스템),\nGraphic : Jiseok")
+       caption = "Source : KOSIS 국가통계포털,\nGraphic : Jiseok")
 
 
 
-setwd("C:/R/Rproject/Energy&Data/230922_energy_price/img")
-
-ggsave("energy_price_fig1_ver2.png",  width=1000, height =800, units ="px", dpi = 100)
+#setwd("C:/R/Rproject/Energy&Data/230922_energy_price/img")
+setwd("V:/2023 정책연구실 주요사업/61. KIER 기술정책플랫폼/[Energy&Data]/resources/images/231011_CPI")
+ggsave("energy_price_fig1_ver2.png",  width=1200, height =700, units ="px", dpi = 100)
 
 
 
@@ -369,13 +379,14 @@ price_fig2 <- read_excel("230922_소비자물가지수.xlsx", sheet ="석유류"
   na.omit() %>% 
   pivot_longer(-type, names_to = "date", values_to ="index") %>% 
   mutate(type = as.factor(type),
-         date = ym(date))
+         date =as.Date(as.yearmon(ym(date))))
 
 
 price_fig2 %>% 
   ggplot(aes(x = date, y = index, group = type, color = type))+
   geom_line(linewidth = 1.5)+
   scale_y_continuous(limits = c(0, 200))+
+  
   scale_color_manual(values = c("burlywood4","firebrick2", "#1f5c99"))+
   
   #geom_line(data =. %>% filter(type =="총지수"), color ="#ec111a", size = 1.5)+
@@ -391,13 +402,13 @@ price_fig2 %>%
                             size = 14),
         plot.title = element_markdown(size= 22, face="bold"),
         plot.subtitle = element_markdown(size= 16,lineheight = 1.2),
-        plot.background = element_rect(fill ="white"),
+       # plot.background = element_rect(fill ="white"),
         axis.text.x = element_text(size = 10),
         axis.text.y = element_text(size = 12),
         axis.title.x =element_text(size = 14),
         panel.grid.minor.x = element_blank(),
         #panel.grid.major.y = element_blank(),
-        panel.grid.major.x = element_blank(),
+        #panel.grid.major.x = element_blank(),
         panel.grid.minor.y = element_blank(),
         plot.title.position = "plot",
         legend.position = "none"
@@ -406,10 +417,11 @@ price_fig2 %>%
        subtitle ="물가지수",
        x = "",
        y = "물가지수",
-       caption = "Source : KESIS(국가에너지통계 정보시스템),\nGraphic : Jiseok")
+       caption = "Source : KOSIS 국가통계포털,\nGraphic : Jiseok")
 
-setwd("C:/R/Rproject/Energy&Data/230922_energy_price/img")
-ggsave("energy_price_fig1_ver3.png",  width= 800, height = 800, units ="px", dpi = 100)
+#setwd("C:/R/Rproject/Energy&Data/230922_energy_price/img")
+setwd("V:/2023 정책연구실 주요사업/61. KIER 기술정책플랫폼/[Energy&Data]/resources/images/231011_CPI")
+ggsave("energy_price_fig1_ver3.png",  width= 600, height = 500, units ="px", dpi = 100)
 
 
 
@@ -434,13 +446,13 @@ total_fig2<-price_fig2 %>%
 price_fig2 %>% 
   ggplot(aes(x = date, y = index, group = type))+
   geom_line(data =. %>% filter(!type  %in% c("총지수", '석유류')), linewidth = 1, color =  "brown")+
-  scale_y_continuous(limits = c(0, 200), breaks = c(40, 100, 160))+
-  gghighlight(use_direct_label = FALSE)+
-  scale_x_date(limits = as.Date(c('2017-12-01', 
-                                  '2023-08-01'), format ="%Y"))+
-  geom_vline(xintercept = as.Date(c('2020-01-01', '2022-01-02')), linetype="dotted")+
+  scale_y_continuous(limits = c(0, 200), breaks = c(0, 100, 200))+
+  gghighlight(use_direct_label = FALSE,
+              unhighlighted_params = list(linewidth = 1, colour = alpha("gray80", 0.4)))+
+  scale_x_date(labels = date_format("'%y"), date_breaks = "1 year")+
+  #geom_vline(xintercept = as.Date(c('2020-01-01', '2022-01-02')), linetype="dotted")+
   
-  facet_wrap(~fct_relevel(type, fig2_level), nrow =4)+
+  facet_wrap(~fct_relevel(type, fig2_level), nrow =2, scales="free_x")+
   #geom_line(data =total_fig2, aes(x = date, y = index), color ="#1f5c99", size = 1.5)+
   #geom_line(data =. %>% filter(type %in% c("석유류")), aes(x = date, y = index), color ="brown", size = 1.5)+
   #geom_line(data =. %>% filter(type %in% c("등유")), aes(x = date, y = index), color ="brown", size = 1.5)+
@@ -450,13 +462,13 @@ price_fig2 %>%
                             size = 14),
         plot.title = element_markdown(size= 22, face="bold"),
         plot.subtitle = element_markdown(size= 16,lineheight = 1.2),
-        plot.background = element_rect(fill ="white"),
+        #plot.background = element_rect(fill ="white"),
         axis.text.x = element_text(size = 10),
         axis.text.y = element_text(size = 12),
         axis.title.x =element_text(size = 14),
         panel.grid.minor.x = element_blank(),
         #panel.grid.major.y = element_blank(),
-        panel.grid.major.x = element_blank(),
+        #panel.grid.major.x = element_blank(),
         panel.grid.minor.y = element_blank(),
         plot.title.position = "plot",
         legend.position = "none"
@@ -465,26 +477,15 @@ price_fig2 %>%
        subtitle ="석유류 물가지수는 등유, 부탄가스, 경유, 휘발유, 취사용LPG, 자동차용LPG로 구성됨",
        x = "",
        y = "물가지수",
-       caption = "Source : KESIS(국가에너지통계 정보시스템),\nGraphic : Jiseok")
+       caption = "Source : KOSIS 국가통계포털,\nGraphic : Jiseok")
 
 
-setwd("C:/R/Rproject/Energy&Data/230922_energy_price/img")
-ggsave("energy_price_fig1_ver4.png",  width= 800, height = 800, units ="px", dpi = 100)
+#setwd("C:/R/Rproject/Energy&Data/230922_energy_price/img")
+setwd("V:/2023 정책연구실 주요사업/61. KIER 기술정책플랫폼/[Energy&Data]/resources/images/231011_CPI")
+ggsave("energy_price_fig1_ver4.png",  width= 900, height = 600, units ="px", dpi = 100)
 
 
-
-xl    = c( 4,  1)
-yl    = c( 1,  4)
-type =rep(LETTERS[1:6], each=60)
-
-type
-line2 = data.frame(x=xl,y=yl,type)
-
-
-line2
-
-
-
+ 
 
 
 
@@ -497,8 +498,7 @@ price_fig3 <- read_excel("230922_소비자물가지수.xlsx", sheet ="전기가�
   na.omit() %>% 
   pivot_longer(-type, names_to = "date", values_to ="index") %>% 
   mutate(type = as.factor(type),
-         date = ym(date))
-
+         date =as.Date(as.yearmon(ym(date))))
 
 unique(price_fig3$type)
 
@@ -533,7 +533,7 @@ price_fig3 %>%
        subtitle ="물가지수",
        x = "",
        y = "물가지수",
-       caption = "Source : KESIS(국가에너지통계 정보시스템),\nGraphic : Jiseok")
+       caption = "Source : KOSIS 국가통계포털,\nGraphic : Jiseok")
 
 
 
@@ -554,28 +554,28 @@ fig3_level
 price_fig3 %>% 
   ggplot(aes(x = date, y = index, group = type))+
   geom_line(linewidth = 1)+
-  scale_y_continuous(limits = c(0, 200), breaks = c(40, 100, 160))+
-  gghighlight(use_direct_label = FALSE)+
-  scale_x_date(limits = as.Date(c('2017-12-01', 
-                                  '2023-08-01'), format ="%Y"))+
-  geom_vline(xintercept = as.Date(c('2020-01-01', '2022-01-02')), linetype="dotted")+
+  scale_y_continuous(limits = c(40, 160), breaks = c(40, 100, 160))+
+  gghighlight(use_direct_label = FALSE,
+              unhighlighted_params = list(linewidth = 1, colour = alpha("gray80", 0.4)))+
+  scale_x_date(labels = date_format("'%y"), date_breaks = "1 year")+
+  #geom_vline(xintercept = as.Date(c('2020-01-01', '2022-01-02')), linetype="dotted")+
   
-  facet_wrap(~fct_relevel(type, fig2_level), nrow =4)+
+  facet_wrap(~fct_relevel(type, fig3_level), nrow =2, scales="free_x")+
   geom_line(data =. %>% filter(type %in% c("총지수")), aes(x = date, y = index), color ="#1f5c99", size = 1.5)+
-  geom_line(data =. %>% filter(type %in% c("전기 · 가스 · 수도")), aes(x = date, y = index), color ="brown", size = 1.5)+  theme_bw()+
+  #geom_line(data =. %>% filter(type %in% c("전기 · 가스 · 수도")), aes(x = date, y = index), color ="brown", size = 1.5)+  theme_bw()+
   theme_minimal()+
   theme(text = element_text(family = 'Nanum Myeongjo',
                             size = 14),
         plot.title = element_markdown(size= 22, face="bold"),
         plot.subtitle = element_markdown(size= 16,lineheight = 1.2),
-        plot.background = element_rect(fill ="white"),
+        #plot.background = element_rect(fill ="white"),
         axis.text.x = element_text(size = 10),
         axis.text.y = element_text(size = 12),
         axis.title.x =element_text(size = 14),
         panel.grid.minor.x = element_blank(),
         #panel.grid.major.y = element_blank(),
-        panel.grid.major.x = element_blank(),
-        panel.grid.minor.y = element_blank(),
+        #panel.grid.major.x = element_blank(),
+        #panel.grid.minor.y = element_blank(),
         plot.title.position = "plot",
         legend.position = "none"
   )+
@@ -583,10 +583,11 @@ price_fig3 %>%
        subtitle ="물가지수",
        x = "",
        y = "물가지수",
-       caption = "Source : KESIS(국가에너지통계 정보시스템),\nGraphic : Jiseok")
+       caption = "Source : KOSIS 국가통계포털,\nGraphic : Jiseok")
 
-setwd("C:/R/Rproject/Energy&Data/230922_energy_price/img")
-ggsave("energy_price_fig3.png",  width= 600, height = 600, units ="px", dpi = 100)
+#setwd("C:/R/Rproject/Energy&Data/230922_energy_price/img")
+setwd("V:/2023 정책연구실 주요사업/61. KIER 기술정책플랫폼/[Energy&Data]/resources/images/231011_CPI")
+ggsave("energy_price_fig3.png",  width= 1000, height = 700, units ="px", dpi = 100)
 
 
 
@@ -595,6 +596,7 @@ ggsave("energy_price_fig3.png",  width= 600, height = 600, units ="px", dpi = 10
 
 
 ## 총지수, 석유류
+ 
 
 
 setwd("C:/R/Rproject/Energy&Data/230922_energy_price")
@@ -602,46 +604,61 @@ price_fig4 <- read_excel("230922_소비자물가지수.xlsx", sheet ="석유교�
   na.omit() %>% 
   pivot_longer(-type, names_to = "date", values_to ="index") %>% 
   mutate(type = as.factor(type),
-         date = ym(date))
+         date =as.Date(as.yearmon(ym(date))))
 
 
-unique(price_fig4$type)
+
+
+fig4_level<-price_fig4 %>% 
+  filter(date == max_date) %>% 
+  arrange(desc(index)) %>% pull(type) %>% as.character
+
+fig4_level
+
 
 price_fig4 %>% 
-  ggplot(aes(x = date, y = index, group = type, color = type))+
-  geom_line(linewidth = 1.5)+
-  scale_y_continuous(limits = c(0, 200))+
+  ggplot(aes(x = date, y = index, group = type))+
+  geom_line(linewidth = 1)+
+  scale_y_continuous(limits = c(40, 160), breaks = c(40,70, 100, 130, 160))+
+  gghighlight(use_direct_label = FALSE,
+              unhighlighted_params = list(linewidth = 1, colour = alpha("gray80", 0.5)))+
+  scale_x_date(labels = date_format("'%y"), date_breaks = "1 year")+
+  #geom_vline(xintercept = as.Date(c('2020-01-01', '2022-01-02')), linetype="dotted")+
   
-  #geom_line(data =. %>% filter(type =="총지수"), color ="#ec111a", size = 1.5)+
-  #geom_line(data =. %>% filter(type %in% c('전기 · 가스 · 수도')), color ="#1f5c99", size = 1.5)+
-  #scale_y_continuous(limits = c(80, 160))+
-  gghighlight(type %in% c('총지수', '석유류'))+
-  theme_bw()+
+  facet_wrap(~fct_relevel(type, fig4_level), nrow =2, scales="free_x")+
+  geom_line(data =. %>% filter(type %in% c("총지수")), aes(x = date, y = index), color ="#1f5c99", size = 1.5)+
+  geom_line(data =. %>% filter(type %in% c("전기 · 가스 · 수도")), aes(x = date, y = index), color ="brown", size = 1.5)+  theme_bw()+
   theme_minimal()+
-  scale_color_manual(values = c("firebrick1", "#1f5c99"))+
-  
   theme(text = element_text(family = 'Nanum Myeongjo',
                             size = 14),
         plot.title = element_markdown(size= 22, face="bold"),
-        plot.background = element_rect(fill ="white"),
         plot.subtitle = element_markdown(size= 16,lineheight = 1.2),
+        #plot.background = element_rect(fill ="white"),
         axis.text.x = element_text(size = 10),
         axis.text.y = element_text(size = 12),
         axis.title.x =element_text(size = 14),
         panel.grid.minor.x = element_blank(),
         #panel.grid.major.y = element_blank(),
-        panel.grid.major.x = element_blank(),
-        panel.grid.minor.y = element_blank(),
+        #panel.grid.major.x = element_blank(),
+        #panel.grid.minor.y = element_blank(),
         plot.title.position = "plot",
         legend.position = "none"
   )+
-  labs(title = "총지수, 석유류",
+  labs(title = "물가지수",
        subtitle ="물가지수",
        x = "",
        y = "물가지수",
-       caption = "Source : KESIS(국가에너지통계 정보시스템),\nGraphic : Jiseok")
+       caption = "Source : KOSIS 국가통계포털,\nGraphic : Jiseok")
 
 
-setwd("C:/R/Rproject/Energy&Data/230922_energy_price/img")
-ggsave("energy_price_fig4.png",  width= 600, height = 600, units ="px", dpi = 100)
+
+
+
+
+
+
+
+setwd("V:/2023 정책연구실 주요사업/61. KIER 기술정책플랫폼/[Energy&Data]/resources/images/231011_CPI")
+#ggsave("energy_price_fig4.png",  width= 600, height = 600, units ="px", dpi = 100)
+ggsave("energy_price_fig4.png",  width= 1000, height = 700, units ="px", dpi = 100)
 

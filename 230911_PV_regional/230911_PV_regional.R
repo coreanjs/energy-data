@@ -8,6 +8,8 @@ font_add_google('Nanum Myeongjo', 'Nanum Myeongjo')
 
 
 ##단위 MWh
+setwd("C:/R/Rproject/Energy&Data")
+
 PV_regional <- read_excel('./230911_PV_regional/PV_regional_selected.xlsx') %>%
   select(-MWh) %>%
   mutate(`2010` = as.numeric(`2010`)) %>% 
@@ -69,11 +71,10 @@ PV_regional %>%
   stat_summary(fun = sum, aes(label = round(..y.., 2), group = region), 
                geom = "text",  hjust = -0.3, family ='Nanum Myeongjo')+
   labs(x = '',
-       title = "2020년 대한민국 지역별 태양광 발전량(TWh)\n(사업용/자가용 구분)",
-       caption = "Source : KESIS(국가에너지통계 정보시스템),\nGraphic : Jiseok")+
+       title = "'20년 대한민국 지역별 사업용·자가용 태양광 생산량(TWh)")+
   theme(text = element_text(family = 'Nanum Myeongjo',
                             size = 14),
-        plot.title = element_text(size= 20, face="bold"),
+        plot.title = element_text(size= 16, face="bold"),
         plot.subtitle = element_markdown(size= 16,lineheight = 1.2),
         axis.text.x = element_text(size = 12),
         axis.text.y = element_text(size = 14),
@@ -123,10 +124,11 @@ PV_regional %>%
   theme_bw()+
   theme_minimal()+
   labs(x = '',
-       title = "2020년 대한민국 지역별 태양광 발전 비중(%)\n(사업용/자가용 구분)")+
+       y = '',
+       title = "'20년 대한민국 지역별 사업용·자가용 태양광 생산량 비율(%)")+
   theme(text = element_text(family = 'Nanum Myeongjo',
                             size = 14),
-        plot.title = element_text(size= 20, face="bold"),
+        plot.title = element_text(size= 16, face="bold"),
         plot.subtitle = element_markdown(size= 16,lineheight = 1.2),
         axis.text.x = element_text(size = 12),
         axis.text.y = element_text(size = 14),
@@ -179,9 +181,53 @@ library(zoo)
 
 PV_with_sum %>% 
   filter(type != "태양광 생산량 전체") %>% 
+  mutate(year = as.Date(as.yearmon(year)),
+         TWh = GWh/1000) %>% 
+  ggplot(aes(x = year,  y =TWh, group = type, fill =type))+
+  geom_col()+
+  theme_bw()+
+  #theme_minimal()+
+  facet_wrap(~fct_relevel(region, region_order), nrow = 2, scales="free_x")+
+  #scale_x_continuous(breaks = seq(2005, 2020, 5))+
+  scale_y_continuous(labels =comma)+
+  geom_vline(xintercept =as.Date(2010))+
+  scale_x_date(labels = date_format("'%y"))+
+  
+  labs(x = '연도',
+       title = "대한민국 지역별 사업용·자가용 태양광 생산량 트렌드(TWh)")+
+  theme(text = element_text(size = 12, family ='Nanum Myeongjo'),
+        plot.title = element_text(size= 20, face="bold"),
+        plot.subtitle = element_markdown(size= 16,lineheight = 1.2),
+        axis.text.x = element_text(size = 10),
+        axis.text.y = element_text(size = 12),
+        axis.title.x =element_text(size = 12),
+        panel.grid.minor.x = element_blank(),
+        #panel.grid.major.y = element_blank(),
+        panel.grid.major.x = element_blank(),
+        panel.grid.minor.y = element_blank(),
+        plot.title.position = "plot",
+        strip.background = element_blank(),
+        strip.text = element_text(face ="bold", size = 16, hjust = 0, vjust = 0)
+  )+
+  guides(fill=guide_legend(title="구분"))+
+  scale_fill_brewer(palette="Set2")
+
+
+setwd("V:/2023 정책연구실 주요사업/61. KIER 기술정책플랫폼/[Energy&Data]/resources/images/231006_pv_regional")
+
+#setwd("C:/Users/User/OneDrive - 한국에너지기술연구원/안지석(개인폴더)/230125_energydata_샘플_가이드_png/resources/images/231006_pv_regional")
+ggsave("fig3.png",  width= 1500, height = 700, units ="px", dpi = 100)
+#ggsave("fig3.png",  width= 900, height = 800, units ="px", dpi = 100)
+
+
+
+## 서울고 대전만
+
+PV_with_sum %>% 
+  filter(type != "태양광 생산량 전체" & region %in% c("서울", "대전")) %>%  
   mutate(year = as.Date(as.yearmon(year))) %>% 
   ggplot(aes(x = year,  y =GWh, group = type, fill =type))+
-  geom_area()+
+  geom_col()+
   theme_bw()+
   #theme_minimal()+
   facet_wrap(~fct_relevel(region, region_order), ncol = 6, scales="free_x")+
@@ -190,8 +236,8 @@ PV_with_sum %>%
   geom_vline(xintercept =as.Date(2010))+
   scale_x_date(labels = date_format("'%y"))+
   
-  labs(x = '지역',
-       title = "2005-2020년 대한민국 지역별 태양광 발전량(사업용/자가용 구분)")+
+  labs(x = '연도',
+       title = "서울과 대전의 태양광 생산량 트렌드")+
   theme(text = element_text(size = 12, family ='Nanum Myeongjo'),
         plot.title = element_text(size= 20, face="bold"),
         plot.subtitle = element_markdown(size= 16,lineheight = 1.2),
@@ -214,4 +260,5 @@ setwd("V:/2023 정책연구실 주요사업/61. KIER 기술정책플랫폼/[Ener
 
 #setwd("C:/Users/User/OneDrive - 한국에너지기술연구원/안지석(개인폴더)/230125_energydata_샘플_가이드_png/resources/images/231006_pv_regional")
 #ggsave("fig3.png",  width= 1500, height = 700, units ="px", dpi = 100)
-ggsave("fig3.png",  width= 900, height = 800, units ="px", dpi = 100)
+ggsave("fig4.png",  width= 500, height = 400, units ="px", dpi = 100)
+

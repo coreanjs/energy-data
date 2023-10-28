@@ -97,9 +97,8 @@ KIER 기술정책플랫폼 업무 참여자 : 안지석, 최지영 이화랑
 
 -   Energy&Data는 별도로 본 과업은 진행하며, 디자인 + 웹기술의 힘을 받을 수 있다는 장점.
 
-```{=html}
 <!-- -->
-```
+
 -   (과업 범위) 웹콘텐츠 3개 + 메인메뉴 개편
 
     -   인당 하나씩 주제 정하고 데이터 확보 및 기획
@@ -110,7 +109,7 @@ KIER 기술정책플랫폼 업무 참여자 : 안지석, 최지영 이화랑
 
     -   CH4를 다룬 인터랙티브 [The other greenhouse gas](https://www.reuters.com/graphics/FOOD-WASTE/METHANE/gdpzwqwqovw/) by reuter
 
-    -   [Interactive: How climate finance \'flows\' around the world](https://www.carbonbrief.org/interactive-how-climate-finance-flows-around-the-world/) by carbon brief
+    -   [Interactive: How climate finance 'flows' around the world](https://www.carbonbrief.org/interactive-how-climate-finance-flows-around-the-world/) by carbon brief
 
     -   [The impacts of climate change at 1.5C, 2C and beyond](https://www.carbonbrief.org/interactive-how-climate-finance-flows-around-the-world/) by carbon brief
 
@@ -123,3 +122,9 @@ KIER 기술정책플랫폼 업무 참여자 : 안지석, 최지영 이화랑
     -   2023주요사업 -\> 61.기술정책플랫폼 -\> 20231018\_ '23년 신규 콘텐츠 with 플랜아이 \_기획
 
     -   주제별 폴더 만들어서 확보 가능한 데이터 넣어주시면 감사
+
+# 2023.10.28 
+
+-   온실가스 데이터 [EDGAR - Emissions Database for Global Atmospheric Research](https://edgar.jrc.ec.europa.eu/)
+
+-   데이터 분석 할 거리가 있는지 같이 논의 필요

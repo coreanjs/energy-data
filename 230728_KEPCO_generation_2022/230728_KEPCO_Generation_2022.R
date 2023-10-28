@@ -277,7 +277,8 @@ gen_2<-KEPCO.Generation %>%
     )+
     labs(title = paste("대한민국 행정구역별/발전원별 발전량\nPower generation by province in South Korea in", KEPCO_year),
          subtitle =paste0(KEPCO_year, "년 기준이며, 지역별 개별 그래프로 나타냄"),
-         x = "",
+         x ="",
+         y= "GWh", 
          caption = "Source : KEPCO, Graphic : Jiseok")
 
 
@@ -426,7 +427,8 @@ gen_5<-KEPCO.Generation %>%
           plot.title.position = "plot",
           plot.caption = element_text(color = "azure4", face="bold"),
     )+
-    labs(x= "", 
+    labs(x ="",
+         y= "GWh", 
          title = paste("대한민국 발전원별/행정구역별 발전량\nPower generation by source in Korea in", KEPCO_year),
          subtitle =paste0(KEPCO_year, "년 기준이며, 발전원별 개별 그래프로 나타냄"),
          caption = "Source : KEPCO, Graphic : Jiseok")
@@ -464,7 +466,8 @@ gen_6<-KEPCO.Generation %>%
           plot.title.position = "plot",
           plot.caption = element_text(color = "azure4", face="bold"),
     )+
-    labs(x= "", 
+    labs(x ="",
+         y= "TWh", 
          title = "석탄/원자력/LNG를 제외한 대한민국 발전원별/행정구역별 발전량\nPower generation by source in Korea in 2022",
          subtitle =paste0(KEPCO_year, "년 기준이며, 주요 발전원을 제외한 나머지 발전원을 개별 그래프로 나타냄."),
          caption = "Source : KEPCO, Graphic : Jiseok")
