@@ -42,7 +42,7 @@ Electricity infrastructure is prone to cost overrun issues almost independently 
 
 ::: fragment
 ::: fragment
-![](PPT_research%20topic/nuclear_construction_cost.png){fig-align="center" width="570"}
+![](PPT_research_topic/nuclear_construction_cost.png){fig-align="center" width="570"}
 :::
 :::
 
