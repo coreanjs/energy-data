@@ -1,5 +1,5 @@
 ---
-title: "Energy Transition: Delivering Energy Infrastructure Projects On Time and On Budget"
+title: "Reaching Net Zero with Energy Infrastructure Projects and On Budget"
 subtitle: "Does cost overrun in nuclear power plant influence the decarbonization in South Korea?"
 author : "Jiseok Ahn"
 format:
@@ -55,12 +55,6 @@ Electricity infrastructure is prone to cost overrun issues almost independently 
 2.  How does the endogeneous modelling of nuclear power plants affect the electrification of end-use sectors?
 3.  How does the inclusion of historically observed cost overruns for South Korea's nuclear power plants affect electricity generation and end-use sectors?
 :::
-
-## Research Objectives
-
--   Fiscal Impacts of industry collapse
--   Local fossil fuel econommy
--   Public finance redistribution - Fiscal federalism
 
 ## Previous Studies {.smaller}
 
