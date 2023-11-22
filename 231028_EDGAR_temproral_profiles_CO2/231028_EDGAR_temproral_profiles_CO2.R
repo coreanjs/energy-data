@@ -64,6 +64,16 @@ EDGAR_monthly %>%
 
 library(ggdist)
 
+
+EDGAR_monthly %>% 
+  filter(country =="KOR") %>% 
+  ggplot(aes(x = month, y = value, group = year))+
+  scale_x_continuous(limits = c(1,12), breaks =seq(1, 12, 1))+
+  stat_lineribbon()+
+  facet_wrap(~description)
+
+
+
 monthly_elec_gen %>% 
   ggplot(aes(x = month, y = TWh))+
   stat_lineribbon(
@@ -107,4 +117,5 @@ monthly_elec_gen %>%
 
 #setwd("./231027_elec_generation_by_month_KEPCO")
 ggsave("gen.png",  width=800, height =1000, units ="px", dpi = 100, bg='white')
+
 

@@ -123,7 +123,7 @@ KIER 기술정책플랫폼 업무 참여자 : 안지석, 최지영 이화랑
 
     -   주제별 폴더 만들어서 확보 가능한 데이터 넣어주시면 감사
 
-# 2023.10.28 
+# 2023.10.28
 
 -   온실가스 데이터 [EDGAR - Emissions Database for Global Atmospheric Research](https://edgar.jrc.ec.europa.eu/)
 

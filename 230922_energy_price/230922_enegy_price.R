@@ -262,20 +262,27 @@ str(price_fig1)
 
 
 library(ggrepel)
+
+unique(price_fig1$type)
+
 price_fig1 %>% 
   ggplot(aes(x = date, y = index, group = type, color = type))+
-  geom_line(linewidth = .5, alpha = .3)+
-  geom_line(data =. %>% filter(type %in% c("총지수", "석유류")), size = 1.7)+
+  geom_line(linewidth = .5, alpha = .7)+
+  geom_line(data =. %>% filter(type %in% c("총지수", "석유류", "전기/가스/수도")), size = 1.4)+
   scale_y_continuous(limits = c(40, 160))+
   #scale_color_brewer(palette ="Paired")+
   scale_x_date(limits = as.Date(c('2017-12-01', 
-                                 '2024-06-01'), format ="%Y"))+
+                                 '2024-12-01'), format ="%Y"))+
+  gghighlight(type %in% c('총지수', '석유류', "전기/가스/수도"),
+              unhighlighted_params = list(linewidth = 1.5, colour = alpha("gray", 1)),
+              use_direct_label = FALSE)+
+  scale_color_manual(values = c("brown",  "black", "#1f5c99"))+
   geom_text_repel(aes(color = type, label = type_label), 
                   family = 'Nanum Myeongjo',
                   size = 4,
                   direction = "y",
                   xlim = c(2020.8, NA),
-                  hjust = -.3,
+                  hjust = -.6,
                   segment.size = .5,
                   segment.alpha = .5,
                   segment.linetype = "dotted",
@@ -283,8 +290,8 @@ price_fig1 %>%
                   segment.curvature = -0.1,
                   segment.ncp = 3,
                   segment.angle = 20)+
-  theme_bw()+
-  theme_minimal()+
+ theme_bw()+
+ theme_minimal()+
   theme(text = element_text(family = 'Nanum Myeongjo',
                             size = 14),
         plot.title = element_markdown(size= 22, face="bold"),
@@ -295,16 +302,16 @@ price_fig1 %>%
         axis.title.x =element_text(size = 14),
         panel.grid.minor.x = element_blank(),
         #panel.grid.major.y = element_blank(),
-        #panel.grid.major.x = element_blank(),
+        panel.grid.major.x = element_blank(),
         panel.grid.minor.y = element_blank(),
         plot.title.position = "plot",
         legend.position = "none"
   )+
-  labs(title = "물가지수",
-       subtitle ="물가지수",
+  labs(title = "대분류별 소비자물가지수",
+       subtitle ="총지수, 석유류, 전기/가스/수도 물가지수만 나타내었음",
        x = "",
        y = "물가지수",
-       caption = "Source : KOSIS 국가통계포털 국가통계포털,\nGraphic : Jiseok")
+       caption = "Source : KOSIS 국가통계포털, Graphic : Jiseok")
 
 #setwd("C:/R/Rproject/Energy&Data/230922_energy_price/img")
 setwd("V:/2023 정책연구실 주요사업/61. KIER 기술정책플랫폼/[Energy&Data]/resources/images/231011_CPI")
@@ -321,11 +328,11 @@ max_date<- range(price_fig1$date)[2]
 
 type_level<-price_fig1 %>% 
   filter(date == max_date) %>% 
-  arrange(desc(index)) %>% pull(type) %>% as.character
+  arrange(desc(index)) %>% 
+  slice(7, 1:6, 8:14)%>% pull(type) %>% as.character
   
 
-type_level
-
+type_level 
 
 
 range(price_fig1$date)
@@ -333,7 +340,7 @@ range(price_fig1$date)
 price_fig1 %>% 
   ggplot(aes(x = date, y = index, group = type))+
   geom_line(linewidth = 1)+
-  scale_y_continuous(limits = c(35, 165), breaks = c(40, 100, 160))+
+  scale_y_continuous(limits = c(35, 165), breaks = c(40, 70, 100,130, 160))+
   gghighlight(use_direct_label = FALSE)+
   scale_x_date(labels = date_format("'%y"), date_breaks = "1 year")+
   
@@ -352,13 +359,12 @@ price_fig1 %>%
         axis.title.x =element_text(size = 14),
         panel.grid.minor.x = element_blank(),
         #panel.grid.major.y = element_blank(),
-        #panel.grid.major.x = element_blank(),
+        panel.grid.major.x = element_blank(),
         panel.grid.minor.y = element_blank(),
         plot.title.position = "plot",
         legend.position = "none"
   )+
-  labs(title = "물가지수",
-       subtitle ="물가지수",
+  labs(title = "대분류별 소비자물가지수",
        x = "",
        y = "물가지수",
        caption = "Source : KOSIS 국가통계포털,\nGraphic : Jiseok")
@@ -381,6 +387,8 @@ price_fig2 <- read_excel("230922_소비자물가지수.xlsx", sheet ="석유류"
   mutate(type = as.factor(type),
          date =as.Date(as.yearmon(ym(date))))
 
+
+unique(price_fig2$type)
 
 price_fig2 %>% 
   ggplot(aes(x = date, y = index, group = type, color = type))+
@@ -436,7 +444,8 @@ max_date<- range(price_fig2$date)[2]
 
 fig2_level<-price_fig2 %>% 
   filter(date == max_date) %>% 
-  arrange(desc(index)) %>% pull(type) %>% as.character
+  arrange(desc(index)) %>%
+  slice(7, 1:6, 8) %>% pull(type) %>% as.character
 
 
 total_fig2<-price_fig2 %>% 
@@ -445,8 +454,9 @@ total_fig2<-price_fig2 %>%
 
 price_fig2 %>% 
   ggplot(aes(x = date, y = index, group = type))+
+  geom_line(data =. %>% filter(type %in% c("총지수")), aes(x = date, y = index), color ="#1f5c99", size = 1.5)+
   geom_line(data =. %>% filter(!type  %in% c("총지수", '석유류')), linewidth = 1, color =  "brown")+
-  scale_y_continuous(limits = c(0, 200), breaks = c(0, 100, 200))+
+  scale_y_continuous(limits = c(0, 200), breaks = c(0,50, 100,150, 200))+
   gghighlight(use_direct_label = FALSE,
               unhighlighted_params = list(linewidth = 1, colour = alpha("gray80", 0.4)))+
   scale_x_date(labels = date_format("'%y"), date_breaks = "1 year")+
@@ -468,13 +478,12 @@ price_fig2 %>%
         axis.title.x =element_text(size = 14),
         panel.grid.minor.x = element_blank(),
         #panel.grid.major.y = element_blank(),
-        #panel.grid.major.x = element_blank(),
+        panel.grid.major.x = element_blank(),
         panel.grid.minor.y = element_blank(),
         plot.title.position = "plot",
         legend.position = "none"
   )+
-  labs(title = "석유류 물가지수",
-       subtitle ="석유류 물가지수는 등유, 부탄가스, 경유, 휘발유, 취사용LPG, 자동차용LPG로 구성됨",
+  labs(title = "석유류 품목 소비자물가지수",
        x = "",
        y = "물가지수",
        caption = "Source : KOSIS 국가통계포털,\nGraphic : Jiseok")
@@ -505,7 +514,7 @@ unique(price_fig3$type)
 price_fig3 %>% 
   ggplot(aes(x = date, y = index, group = type, color = type))+
   geom_line(linewidth = 1.5)+
-  scale_y_continuous(limits = c(0, 200))+
+  scale_y_continuous(limits = c(0, 200), breaks = seq(0, 200, 50))+
   
   #geom_line(data =. %>% filter(type =="총지수"), color ="#ec111a", size = 1.5)+
   #geom_line(data =. %>% filter(type %in% c('전기 · 가스 · 수도')), color ="#1f5c99", size = 1.5)+
@@ -547,14 +556,16 @@ max_date<- range(price_fig3$date)[2]
 
 fig3_level<-price_fig3 %>% 
   filter(date == max_date) %>% 
-  arrange(desc(index)) %>% pull(type) %>% as.character
+  arrange(desc(index)) %>% 
+  slice(5, 1:4, 6) %>% 
+  pull(type) %>% as.character
 
 fig3_level
 
 price_fig3 %>% 
   ggplot(aes(x = date, y = index, group = type))+
   geom_line(linewidth = 1)+
-  scale_y_continuous(limits = c(40, 160), breaks = c(40, 100, 160))+
+  scale_y_continuous(limits = c(0, 200), breaks = seq(0, 200, 50))+
   gghighlight(use_direct_label = FALSE,
               unhighlighted_params = list(linewidth = 1, colour = alpha("gray80", 0.4)))+
   scale_x_date(labels = date_format("'%y"), date_breaks = "1 year")+
@@ -574,13 +585,12 @@ price_fig3 %>%
         axis.title.x =element_text(size = 14),
         panel.grid.minor.x = element_blank(),
         #panel.grid.major.y = element_blank(),
-        #panel.grid.major.x = element_blank(),
-        #panel.grid.minor.y = element_blank(),
+        panel.grid.major.x = element_blank(),
+        panel.grid.minor.y = element_blank(),
         plot.title.position = "plot",
         legend.position = "none"
   )+
-  labs(title = "물가지수",
-       subtitle ="물가지수",
+  labs(title = "전기·가스·수도 품목 소비자물가지수",
        x = "",
        y = "물가지수",
        caption = "Source : KOSIS 국가통계포털,\nGraphic : Jiseok")
@@ -595,8 +605,7 @@ ggsave("energy_price_fig3.png",  width= 1000, height = 700, units ="px", dpi = 1
 
 
 
-## 총지수, 석유류
- 
+## 교통요금 품목 소비자물가지수
 
 
 setwd("C:/R/Rproject/Energy&Data/230922_energy_price")
@@ -611,7 +620,8 @@ price_fig4 <- read_excel("230922_소비자물가지수.xlsx", sheet ="석유교�
 
 fig4_level<-price_fig4 %>% 
   filter(date == max_date) %>% 
-  arrange(desc(index)) %>% pull(type) %>% as.character
+  arrange(desc(index)) %>% 
+  slice(4, 1:3, 5:8) %>% pull(type) %>% as.character
 
 fig4_level
 
@@ -619,7 +629,7 @@ fig4_level
 price_fig4 %>% 
   ggplot(aes(x = date, y = index, group = type))+
   geom_line(linewidth = 1)+
-  scale_y_continuous(limits = c(40, 160), breaks = c(40,70, 100, 130, 160))+
+  scale_y_continuous(limits = c(0, 200), breaks = seq(0, 200, 50))+
   gghighlight(use_direct_label = FALSE,
               unhighlighted_params = list(linewidth = 1, colour = alpha("gray80", 0.5)))+
   scale_x_date(labels = date_format("'%y"), date_breaks = "1 year")+
@@ -639,13 +649,12 @@ price_fig4 %>%
         axis.title.x =element_text(size = 14),
         panel.grid.minor.x = element_blank(),
         #panel.grid.major.y = element_blank(),
-        #panel.grid.major.x = element_blank(),
-        #panel.grid.minor.y = element_blank(),
+        panel.grid.major.x = element_blank(),
+        panel.grid.minor.y = element_blank(),
         plot.title.position = "plot",
         legend.position = "none"
   )+
-  labs(title = "물가지수",
-       subtitle ="물가지수",
+  labs(title = "교통요금 품목 소비자물가지수",
        x = "",
        y = "물가지수",
        caption = "Source : KOSIS 국가통계포털,\nGraphic : Jiseok")
