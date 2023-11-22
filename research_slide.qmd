@@ -1,0 +1,84 @@
+---
+title: "Energy Transition: Delivering Energy Infrastructure Projects On Time and On Budget"
+subtitle: "Does cost overrun in nuclear power plant influence the decarbonization in South Korea?"
+author : "Jiseok Ahn"
+format:
+  revealjs: 
+    slide-number: true
+    pdf-max-pages-per-slide: true
+    incremental : true
+  #  chalkboard: 
+  #    buttons: false
+  #  preview-links: auto
+   # logo: fig/quarto.png
+   # css: css/styles.css
+   # footer: <https://quarto.org>
+bibliography: references.bib
+---
+
+## Background {.smaller}
+
+S.Korea reverses the nuclear phase-out policy of the previous administration.
+
+-   Electricity demand will increase with the rapid electrification and with the increase in investments in cutting-edge industries.
+
+-   Supply capacity needs to be expanded for stable electricity supply. Increasing the possibility of building new nuclear power plants.
+
+-   It is estimated that nuclear power will make up a greater part of overall power generation for 2038 once the final version of the next basic plan contains plans to build new nuclear power plants.
+
+-   However, experts are pointing out that sufficient review and discussion should precede construction projects for large-scale nuclear power plants.
+
+## Motivation {.smaller}
+
+Electricity infrastructure is prone to cost overrun issues almost independently of technology or location.
+
+::: fragment
+-   hydroelectric dams and nuclear reactors have the greatest amount and frequency of cost overruns. [@sovacool2014].
+
+-   Projections of nuclear plant costs have repeatedly failed to predict the cost overruns observed[@sovacool2014a].
+
+-   [@eash-gates2020] suggests a bottom-up cost modeling mechanisms to identify the rise in nuclear construction costs over the past five decades.
+:::
+
+::: fragment
+::: fragment
+![](PPT_research%20topic/nuclear_construction_cost.png){fig-align="center" width="570"}
+:::
+:::
+
+## Research questions
+
+::: callout-note
+## Research Questions are as follows
+
+1.  How does cpaturing the cost of nuclear capacity expansion affects of its share of South Korea's electricity generation over time?
+2.  How does the endogeneous modelling of nuclear power plants affect the electrification of end-use sectors?
+3.  How does the inclusion of historically observed cost overruns for South Korea's nuclear power plants affect electricity generation and end-use sectors?
+:::
+
+## Research Objectives
+
+-   Fiscal Impacts of industry collapse
+-   Local fossil fuel econommy
+-   Public finance redistribution - Fiscal federalism
+
+## Previous Studies {.smaller}
+
+Cost overrun expectations are usually not considered in IAMs, but few have been implemented in some regional analysis.
+
+-   A case study of Ecuador uses a partial equilibrium energy system optimization model(TIMES) to address uncertainties around investment cost overruns[@carvajal2019].
+
+-   Using the MESSAGE model(COPPE-MSB), [@köberle2018] analyzes the effects of cost overruns and construction delays through 2050 on the results of a cost-optimal energy infrastructure expansion model for Brazil.
+
+-   [@arbuckle2021] provides the reason to be more cautious about cost overruns in electricity generation planning. -canada
+
+## Data
+
+-   Annual survey of coal production and preperation
+-   U.S. Census Bureau
+    -   Census of Governments :::
+    -   
+
+## Future Work {.scrollable .smaller}
+
+## References {.scrollable .smaller}

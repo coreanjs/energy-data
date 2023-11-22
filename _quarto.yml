@@ -16,5 +16,14 @@ website:
         text: Energy & Data
       - href: sector_coupling.qmd
         text: Sector Coupling
+
+
+  sidebar:
+    style: docked
+    contents: 
+      - section: "PPT"
+        contents:
+          - href: research_slide.qmd
+            text: "Research"
 editor: visual
 
