@@ -42,7 +42,7 @@ Electricity infrastructure is prone to cost overrun issues almost independently 
 
 ::: fragment
 ::: fragment
-![](PPT_research_topic/nuclear_construction_cost.png){fig-align="center" width="570"}
+![](PPT_research_topic/nuclear_construction_cost.png){fig-align="center" width="571"}
 :::
 :::
 
@@ -74,10 +74,9 @@ Cost overrun expectations are usually not considered in IAMs, but few have been 
 
 ## Data
 
--   Annual survey of coal production and preperation
--   U.S. Census Bureau
-    -   Census of Governments :::
-    -   
+Data from privious study
+
+![](PPT_research_topic/cost_overrun.png){fig-align="center"}
 
 ## Future Work {.scrollable .smaller}
 
