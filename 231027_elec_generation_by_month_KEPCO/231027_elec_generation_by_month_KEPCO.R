@@ -64,7 +64,7 @@ monthly_elec_gen %>%
   geom_line(data = . %>% filter(year == 2021), color ="#f7a102", linewidth = 1.2)+
   #scale_fill_brewer(palette="Greens")+
   scale_fill_grey(start = 0.9, end = 0.6)+
-  scale_x_continuous(limits = c(1, 12), breaks = seq(1, 12, 1))+
+  scale_x_continuous(limits = c(1, 12), breaks = c(1, 3, 6, 9, 12))+
   scale_y_continuous(limits = c(1, 23), breaks = seq(0, 20, 5))+
   facet_wrap(~fct_relevel(type, type_level), nrow=2, scales="free_x")+
   theme_bw()+
@@ -209,7 +209,7 @@ b<- monthly_elec_gen_with_total %>%
         strip.text.x = element_text(size = 14),
         legend.position = 'none'
   )+
-  labs(title = "발전원별 비중(%)",
+  labs(title = "발전원별 발전량 비중(%)",
        x ="연도",
        y = "비중(%)")
 
@@ -217,7 +217,7 @@ b
 
 setwd("C:/Users/User/OneDrive - 한국에너지기술연구원/안지석(개인폴더)/230125_energydata_샘플_가이드_png/resources/images/231102_elec_gen_2017_2022")
 
-
+library(patchwork)
 
 a/b+plot_annotation('2017-2022 주요 발전원별 발전량 및 발전비중', 
                   subtitle ="발전량은 2019, 2020년 감소하였다가 다시 증가 추세이며,\n유연탄의 발전 비중은 꾸준히 감소(41->31%)하고 있음",

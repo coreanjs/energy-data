@@ -198,16 +198,16 @@
   {
     "objectID": "research_slide.html#motivation",
     "href": "research_slide.html#motivation",
-    "title": "Reaching Net Zero with Energy Infrastructure Projects and On Budget",
+    "title": "Research proposal",
     "section": "Motivation",
-    "text": "Motivation\nElectricity infrastructure is prone to cost overrun issues almost independently of technology or location.\n\n\nhydroelectric dams and nuclear reactors have the greatest amount and frequency of cost overruns. (Sovacool, Nugent, and Gilbert 2014).\nProjections of nuclear plant costs have repeatedly failed to predict the cost overruns observed(Sovacool, Gilbert, and Nugent 2014).\n(Eash-Gates et al. 2020) suggests a bottom-up cost modeling mechanisms to identify the rise in nuclear construction costs over the past five decades."
+    "text": "Motivation\nElectricity infrastructure is prone to cost overrun issues almost independently of technology or location.\n\n\nHydroelectric dams and nuclear reactors have the greatest amount and frequency of cost overruns. (Sovacool, Nugent, and Gilbert 2014). Moreover, projections of nuclear plant costs have repeatedly failed to predict the cost overruns observed(Sovacool, Gilbert, and Nugent 2014).\n\n\n\n\n(Eash-Gates et al. 2020) finds that indirect expenses, largely soft costs, contributed a majority of the cost rise. Also, this study suggests a bottom-up cost modeling mechanisms to identify the rise in nuclear construction costs over the past five decades."
   },
   {
     "objectID": "research_slide.html#research-questions",
     "href": "research_slide.html#research-questions",
-    "title": "Reaching Net Zero with Energy Infrastructure Projects and On Budget",
+    "title": "Research proposal",
     "section": "Research questions",
-    "text": "Research questions\n\n\n\n\n\n\nResearch Questions are as follows\n\n\n\nHow does cpaturing the cost of nuclear capacity expansion affects of its share of South Korea’s electricity generation over time?\nHow does the endogeneous modelling of nuclear power plants affect the electrification of end-use sectors?\nHow does the inclusion of historically observed cost overruns for South Korea’s nuclear power plants affect electricity generation and end-use sectors?"
+    "text": "Research questions\n\n\n\n\n\n\nResearch Questions are as follows\n\n\n\n\nHow does capturing the cost of nuclear capacity expansion affect of its share of South Korea’s electricity generation over time?\n\n\n\n\nHow does the endogenous modeling of nuclear power plants affect the electrification of end-use sectors?\n\n\n\n\nHow does the inclusion of historically observed cost overruns for South Korea’s nuclear power plants affect electricity generation and end-use sectors?"
   },
   {
     "objectID": "research_slide.html#research-objectives",
@@ -219,36 +219,92 @@
   {
     "objectID": "research_slide.html#previous-studies",
     "href": "research_slide.html#previous-studies",
-    "title": "Reaching Net Zero with Energy Infrastructure Projects and On Budget",
+    "title": "Research proposal",
     "section": "Previous Studies",
-    "text": "Previous Studies\nCost overrun expectations are usually not considered in IAMs, but few have been implemented in some regional analysis.\n\nA case study of Ecuador uses a partial equilibrium energy system optimization model(TIMES) to address uncertainties around investment cost overruns(Carvajal and Li 2019).\nUsing the MESSAGE model(COPPE-MSB), (Köberle et al. 2018) analyzes the effects of cost overruns and construction delays through 2050 on the results of a cost-optimal energy infrastructure expansion model for Brazil.\n(Arbuckle et al. 2021) provides the reason to be more cautious about cost overruns in electricity generation planning. -canada"
+    "text": "Previous Studies\nCost overrun expectations are usually not considered in IAMs, but few have been implemented in some regional analysis.\n\nA case study of Ecuador uses a partial equilibrium energy system optimization model(TIMES) to address uncertainties around investment cost overruns(Carvajal and Li 2019).\nUsing the MESSAGE model(COPPE-MSB), (Köberle et al. 2018) analyzes the effects of cost overruns and construction delays through 2050 on the results of a cost-optimal energy infrastructure expansion model for Brazil.\n(Arbuckle et al. 2021) presents a novel endogenous representation of hydropower production in GCAM-Canada, and suggests the reason to be more cautious about cost overruns in electricity generation planning."
   },
   {
     "objectID": "research_slide.html#data",
     "href": "research_slide.html#data",
-    "title": "Reaching Net Zero with Energy Infrastructure Projects and On Budget",
+    "title": "Research proposal",
     "section": "Data",
-    "text": "Data\nData from privious study"
+    "text": "Data\nData from previous study\n\nTable below shows electricity development cost overrun magnitudes for different technology(Arbuckle et al. 2021). However, no Korean nuclear power plants are included."
   },
   {
     "objectID": "research_slide.html#future-work",
     "href": "research_slide.html#future-work",
-    "title": "Reaching Net Zero with Energy Infrastructure Projects and On Budget",
+    "title": "Energy & Data @ KIER",
     "section": "Future Work",
     "text": "Future Work"
   },
   {
     "objectID": "research_slide.html#references",
     "href": "research_slide.html#references",
-    "title": "Reaching Net Zero with Energy Infrastructure Projects and On Budget",
+    "title": "Research proposal",
     "section": "References",
-    "text": "References\n\n\n\n\n\n\nArbuckle, Evan J., Matthew Binsted, Evan G. R. Davies, Diego V. Chiappori, Candelaria Bergero, Muhammad-Shahid Siddiqui, Christopher Roney, Haewon C. McJeon, Yuyu Zhou, and Nick Macaluso. 2021. “Insights for Canadian Electricity Generation Planning from an Integrated Assessment Model: Should We Be More Cautious about Hydropower Cost Overruns?” Energy Policy 150 (March): 112138. https://doi.org/10.1016/j.enpol.2021.112138.\n\n\nCarvajal, Pablo E., and Francis G. N. Li. 2019. “Challenges for Hydropower-Based Nationally Determined Contributions: A Case Study for Ecuador.” Climate Policy 19 (8): 974–87. https://doi.org/10.1080/14693062.2019.1617667.\n\n\nEash-Gates, Philip, Magdalena M. Klemun, Goksin Kavlak, James McNerney, Jacopo Buongiorno, and Jessika E. Trancik. 2020. “Sources of Cost Overrun in Nuclear Power Plant Construction Call for a New Approach to Engineering Design.” Joule 4 (11): 2348–73. https://doi.org/10.1016/j.joule.2020.10.001.\n\n\nKöberle, Alexandre C., Rafael Garaffa, Bruno S. L. Cunha, Pedro Rochedo, André F. P. Lucena, Alexandre Szklo, and Roberto Schaeffer. 2018. “Are Conventional Energy Megaprojects Competitive? Suboptimal Decisions Related to Cost Overruns in Brazil.” Energy Policy 122 (November): 689–700. https://doi.org/10.1016/j.enpol.2018.08.021.\n\n\nSovacool, Benjamin K., Alex Gilbert, and Daniel Nugent. 2014. “Risk, Innovation, Electricity Infrastructure and Construction Cost Overruns: Testing Six Hypotheses.” Energy 74 (September): 906–17. https://doi.org/10.1016/j.energy.2014.07.070.\n\n\nSovacool, Benjamin K., Daniel Nugent, and Alex Gilbert. 2014. “Construction Cost Overruns and Electricity Infrastructure: An Unavoidable Risk?” The Electricity Journal 27 (4): 112–20. https://doi.org/10.1016/j.tej.2014.03.015."
+    "text": "References\n\n\n\n\n\n\nArbuckle, Evan J., Matthew Binsted, Evan G. R. Davies, Diego V. Chiappori, Candelaria Bergero, Muhammad-Shahid Siddiqui, Christopher Roney, Haewon C. McJeon, Yuyu Zhou, and Nick Macaluso. 2021. “Insights for Canadian Electricity Generation Planning from an Integrated Assessment Model: Should We Be More Cautious about Hydropower Cost Overruns?” Energy Policy 150 (March): 112138. https://doi.org/10.1016/j.enpol.2021.112138.\n\n\nCarvajal, Pablo E., and Francis G. N. Li. 2019. “Challenges for Hydropower-Based Nationally Determined Contributions: A Case Study for Ecuador.” Climate Policy 19 (8): 974–87. https://doi.org/10.1080/14693062.2019.1617667.\n\n\nDu, Yangbo, and John E. Parsons. n.d. “Update on the Cost of Nuclear Power.” https://doi.org/10.2139/ssrn.1470903.\n\n\nEash-Gates, Philip, Magdalena M. Klemun, Goksin Kavlak, James McNerney, Jacopo Buongiorno, and Jessika E. Trancik. 2020. “Sources of Cost Overrun in Nuclear Power Plant Construction Call for a New Approach to Engineering Design.” Joule 4 (11): 2348–73. https://doi.org/10.1016/j.joule.2020.10.001.\n\n\nKöberle, Alexandre C., Rafael Garaffa, Bruno S. L. Cunha, Pedro Rochedo, André F. P. Lucena, Alexandre Szklo, and Roberto Schaeffer. 2018. “Are Conventional Energy Megaprojects Competitive? Suboptimal Decisions Related to Cost Overruns in Brazil.” Energy Policy 122 (November): 689–700. https://doi.org/10.1016/j.enpol.2018.08.021.\n\n\nSovacool, Benjamin K., Alex Gilbert, and Daniel Nugent. 2014. “Risk, Innovation, Electricity Infrastructure and Construction Cost Overruns: Testing Six Hypotheses.” Energy 74 (September): 906–17. https://doi.org/10.1016/j.energy.2014.07.070.\n\n\nSovacool, Benjamin K., Daniel Nugent, and Alex Gilbert. 2014. “Construction Cost Overruns and Electricity Infrastructure: An Unavoidable Risk?” The Electricity Journal 27 (4): 112–20. https://doi.org/10.1016/j.tej.2014.03.015."
   },
   {
     "objectID": "research_slide.html#background",
     "href": "research_slide.html#background",
-    "title": "Reaching Net Zero with Energy Infrastructure Projects and On Budget",
+    "title": "Research proposal",
     "section": "Background",
-    "text": "Background\nS.Korea reverses the nuclear phase-out policy of the previous administration.\n\nElectricity demand will increase with the rapid electrification and with the increase in investments in cutting-edge industries.\nSupply capacity needs to be expanded for stable electricity supply. Increasing the possibility of building new nuclear power plants.\nIt is estimated that nuclear power will make up a greater part of overall power generation for 2038 once the final version of the next basic plan contains plans to build new nuclear power plants.\nHowever, experts are pointing out that sufficient review and discussion should precede construction projects for large-scale nuclear power plants."
+    "text": "Background\nKorea reverses the nuclear phase-out policy of the previous administration.\n\n\n[Social Change] Electricity demand will increase with the rapid electrification and with the increase in investments in cutting-edge industries.\n\nSupply capacity needs to be expanded for stable electricity supply, increasing the possibility of building new nuclear power plants.\n\n\n\n\n\n[Expected Policy] It is estimated that nuclear power will make up a greater part of overall power generation for 2038, once the final version of the next 11th basic plan contains plans to build new nuclear power plants.\n\nHowever, experts are pointing out that sufficient review and discussion should precede construction projects for large-scale nuclear power plants."
+  },
+  {
+    "objectID": "research_slide.html#research-plan",
+    "href": "research_slide.html#research-plan",
+    "title": "Research proposal",
+    "section": "Research Plan",
+    "text": "Research Plan\n\nNeed to gather cost overrun data for Korea’s recently proposed nuclear power plants.\n\nThere is information from several press releases, such as YTN(2017), Hankyoreh(2017), Energy & Environment News(2020), concerning cost overruns in Korea’s nuclear power plants.\n\nRun GCAM based on Korea’s available cost overrun data and analyze the results."
+  },
+  {
+    "objectID": "research_slide.html#section",
+    "href": "research_slide.html#section",
+    "title": "Research proposal",
+    "section": "",
+    "text": "Thank you"
+  },
+  {
+    "objectID": "research_slide.html#literature-review",
+    "href": "research_slide.html#literature-review",
+    "title": "Research proposal",
+    "section": "Literature Review",
+    "text": "Literature Review\nCost overrun expectations are usually not considered in IAMs, but few have been implemented in some regional analysis.\n\n\nA case study of Ecuador uses a partial equilibrium energy system optimization model(TIMES) to address uncertainties around investment cost overruns(Carvajal and Li 2019).\nUsing the MESSAGE model(COPPE-MSB), (Köberle et al. 2018) analyzes the effects of cost overruns and construction delays through 2050 on the results of a cost-optimal energy infrastructure expansion model for Brazil.\n(Arbuckle et al. 2021) presents a novel endogenous representation of hydropower production in GCAM-Canada, and suggests the reason to be more cautious about cost overruns in electricity generation planning."
+  },
+  {
+    "objectID": "research_slide.html#data-availability",
+    "href": "research_slide.html#data-availability",
+    "title": "Research proposal",
+    "section": "Data availability",
+    "text": "Data availability\nData from previous study\n\nGCAM-Canada study shows electricity development cost overrun magnitudes for different technology(Arbuckle et al. 2021). However, no Korean nuclear power plants are included in this study.\n(Du and Parsons, n.d.) update the cost of nuclear power as calculated in the MIT (2003) Future of Nuclear Power study. It includes data in Japan and the Republic of Korea as well as recently proposed plants in the US."
+  },
+  {
+    "objectID": "research_slide.html#last-slide",
+    "href": "research_slide.html#last-slide",
+    "title": "Research proposal",
+    "section": "Last slide",
+    "text": "Last slide\nThank you"
+  },
+  {
+    "objectID": "research_slide.html#literature-review-1",
+    "href": "research_slide.html#literature-review-1",
+    "title": "Research proposal",
+    "section": "Literature Review",
+    "text": "Literature Review\n\nGCAM-Canada study shows electricity development cost overrun magnitudes for different technology(Arbuckle et al. 2021). However, no Korean nuclear power plants are included in this study."
+  },
+  {
+    "objectID": "research_slide.html#literature-review-2",
+    "href": "research_slide.html#literature-review-2",
+    "title": "Research proposal",
+    "section": "Literature Review",
+    "text": "Literature Review\n\n(Du and Parsons, n.d.) in 2009 update the cost of nuclear power as calculated in the MIT (2003) Future of Nuclear Power study. It includes data in Japan and the Republic of Korea as well as recently proposed plants in the US."
+  },
+  {
+    "objectID": "research_slide.html#thank-you",
+    "href": "research_slide.html#thank-you",
+    "title": "Research proposal",
+    "section": "Thank you",
+    "text": "Thank you"
   }
 ]
