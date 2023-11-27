@@ -98,10 +98,16 @@ bibliography: references.bib
 -   Run GCAM based on Korea's available cost overrun data and analyze the results.
 
 ::: {layout="[50,50]"}
-![](PPT_research_topic/korea_nuclear_cost_overrun.png){width="500"}
+![](PPT_research_topic/korea_nuclear_cost_overrun.png){width="545"}
 
-![](PPT_research_topic/nuclear_construction_cost_image.png){width="500"}
+![](PPT_research_topic/nuclear_construction_cost_image.png){width="402"}
 :::
+
+## Research Plan {.scrollable .smaller}
+
+Here is a brief summary of cost overrun trends for Korea's nuclear power plants.
+
+![](PPT_research_topic/fig1.png){fig-align="center" width="533"}
 
 ## Thank you
 
