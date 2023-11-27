@@ -9,6 +9,7 @@ format:
   revealjs: 
     slide-number: true
     pdf-max-pages-per-slide: true
+    chalkboard: true
    # incremental : true
   #  chalkboard: 
   #    buttons: false
