@@ -2,7 +2,7 @@
 title: "Research proposal"
 #"Reaching Net Zero with Energy Infrastructure Projects and On Budget"
 subtitle: "Title : Analyzing Level of Cost Overruns for Nuclear Power Plants under Korea's Carbon Neutrality"
-date: today
+date: "2023-11-28"
 date-format: long
 author : "Jiseok Ahn<br><br> KAIST IAM Group + KIER"
 format:
@@ -32,7 +32,11 @@ bibliography: references.bib
 ::: fragment
 -   **\[Expected Policy\]** It is estimated that nuclear power will make up a greater part of overall power generation for 2038, once the final version of the next 11th basic plan contains plans to build new nuclear power plants.
 
-    -   However, experts are pointing out that sufficient review and discussion should precede construction projects for large-scale nuclear power plants.
+:::
+
+::: fragment
+
+-   However, experts are pointing out that sufficient review and discussion should precede construction projects for large-scale nuclear power plants.
 :::
 
 ## Motivation {.smaller}

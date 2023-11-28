@@ -65,7 +65,7 @@ nuclear_cost_overrun %>%
   geom_line(aes(group = name), color ="red")+
   geom_text(data = . %>% filter(type == "final_cost"), aes(label = paste0(increased_pct, "%")),hjust =-.3)+
   scale_color_manual(values = c('red','blue'))+
-  scale_y_continuous(limits = c(0, 10))+
+  scale_y_continuous(limits = c(0, 8))+
   geom_point(size = 2.5)+
   coord_flip()+
   theme_bw()+
@@ -74,7 +74,7 @@ nuclear_cost_overrun %>%
                             size = 14),
         plot.title = element_text(size = 24, face = "bold"),
         plot.subtitle = element_markdown(size = 14, lineheight = 1.2),
-        axis.text = element_text(size = 14),
+        axis.text = element_text(size = 12),
         axis.ticks.x = element_line(linewidth = .2,
                                     color = 'black'),
         axis.ticks.length = unit(.08, "cm"),
